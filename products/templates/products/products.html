@@ -18,6 +18,7 @@
                     <a href="{% url 'products:category' category.id %}" class="list-group-item">
                         {{ category.name }}
                     </a>
+                     
                 {% endfor %}
             </div>
 
@@ -34,16 +35,16 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="/static/vendor/img/slides/slide-1.jpg" alt="First slide">
+                        <img class="d-block img-fluid" src="/static/vendor/img/IMG_2821.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="/static/vendor/img/slides/slide-2.jpg" alt="Second slide">
+                        <img class="d-block img-fluid" src="/static/vendor/img/IMG_2820.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="/static/vendor/img/slides/slide-3.jpg" alt="Second slide">
+                        <img class="d-block img-fluid" src="/static/vendor/img/IMG_2823.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="/static/vendor/img/slides/slide-3 copy.jpg" alt="Third slide">
+                        <img class="d-block img-fluid" src="/static/vendor/img/IMG_2843.jpg" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -69,8 +70,10 @@
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="#">{{ product.name }}</a>
+                                    <a href="#">{{ product.category }}</a>
                                 </h4>
                                 <h5>{{ product.price }}</h5>
+                                <!--h3>{{ product.description }}</h3-->
                                 <p class="card-text">{{ product.description }}</p>
                             </div>
                             <div class="card-footer text-center">
@@ -123,7 +126,7 @@
 {% block footer %}
 	<footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Store 2022</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Store 2026</p>
         </div>
         <!-- /.container -->
     </footer>
