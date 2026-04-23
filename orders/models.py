@@ -1,6 +1,12 @@
 from django.db import models
 from users.models import User
 from products.models import Product
+#from phonenumbers import PhoneNumberField
+
+#from phonenumber_field.modelfields import PhoneNumberField
+
+#class Contact(models.Model):
+    #phone = PhoneNumberField()
 
 
 class Order(models.Model):
@@ -15,6 +21,7 @@ class Order(models.Model):
      address = models.TextField()
      created = models.DateTimeField(auto_now_add=True)
      status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    #phone_number = models.PhoneNumberField(blank=True, null=True)
 
 
 class OrderItem(models.Model):

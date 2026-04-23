@@ -2,6 +2,7 @@ asgiref==3.8.1
 Django==4.2.13
 django-allauth==0.63.1
 django-debug-toolbar==4.4.1
+django-phonenumber-field
 flake8==7.0.0
 isort==5.13.2
 mccabe==0.7.0

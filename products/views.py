@@ -6,6 +6,7 @@ from django.views.generic.list import ListView
 from common.views import TitleMixin
 from products.models import Basket, Product, ProductCategory
 
+from orders.models import Order
 
 class IndexView(TitleMixin, TemplateView):
     template_name = 'products/index.html'
@@ -49,3 +50,9 @@ def basket_remove(request, basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+class OrdersListView(TitleMixin, ListView):
+    model = Order
+    template_name = 'orders/confirmed_orders.html'
+    paginate_by = 3
+    title = 'Store - Каталог'

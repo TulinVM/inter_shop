@@ -1,0 +1,18 @@
+<h2>Подтвержденные заказы</h2>
+
+{% for order in orders %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p><strong>Имя:</strong> {{ orders.customer_name }}</p>
+            <p><strong>Адрес:</strong> {{ orders.address }}</p>
+            <p><strong>Дата:</strong> {{ orders.created }}</p>
+
+            <h5>Товары:</h5>
+            {% for item in order.items.all %}
+                <p>{{ item.product.name }} x {{ item.quantity }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% empty %}
+    <p>Нет подтвержденных заказов</p>
+{% endfor %}

@@ -23,37 +23,37 @@
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Интернет магазин</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Интернет магазин</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products:index' %}">Каталог <i class="fas fa-shopping-bag"></i>
-                    </a>
-                </li>
-                {% if user.is_authenticated %}
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products:index' %}">Каталог <i
+                                class="fas fa-shopping-bag"></i>
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-user-circle"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="{% url 'users:profile' user.id %}">Профиль</a>
                             </li>
-                            <li><a class="dropdown-item" href="#">Заказы</a></li>
                             {% if user.is_superuser or user.is_staff %}
-                                <li>
-                                    <a class="dropdown-item" href="{% url 'admin:index' %}">
-                                        Админ-панель
-                                    </a>
-                                </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'admin:index' %}">
+                                    Админ-панель
+                                </a>
+                            </li>
                             {% endif %}
                             <li>
                                 <hr class="dropdown-divider">
@@ -65,59 +65,32 @@
                             </li>
                         </ul>
                     </li>
-                {% else %}
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users:login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
                     </li>
-                {% endif %}
-            </ul>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-{% block content %} {% endblock %}
+    {% block content %} {% endblock %}
 
-{% block footer %} 
-<!--h4>Ароматический диффузор, 50 мл 
-<br>
-Премиум масла Франция-Германия <br> Аромат 3-6 месяцев <br>Стильный декор и роскошный подарок<br>
+    {% block footer %}
 
-Описание 
-Подарите дому ауру элитного бутик-отеля. Глубокий, сбалансированный и невероятно стойкий древесно-амбровый аромат, который говорит о вашем безупречном вкусе.
-Это не просто ароматизатор — это атмосфера роскоши, уюта и стиля, заключенная в элегантный флакон ручной работы. Идеальное решение для ценителей, которые не ищут компромиссов между эстетикой и качеством.
+    {% endblock %}
 
-🎁 ИДЕАЛЬНЫЙ ПОДАРОК:
-Забудьте про обыденные сувениры! Этот диффузор — знак внимания к деталям. Его роскошный аромат и дизайн скажут о вашем отношении больше любых слов. Идеально для новоселья, дня рождения или в знак особого уважения.
-✨ КЛЮЧЕВЫЕ ПРЕИМУЩЕСТВА:
-· ⏳ НЕВЕРОЯТНАЯ СТОЙКОСТЬ: Наслаждайтесь насыщенным ароматом до 3 месяцев и его мягким, деликатным шлейфом до 6 месяцев. Натуральные компоненты раскрываются постепенно, даря новые оттенки.
-· 🌿 ПРЕМИАЛЬНЫЕ КОМПОНЕНТЫ: В основе — натуральные ароматические масла из Франции и Германии. Никакой химии, только чистый, безопасный и благородный запах.
-· 🎛 КОНТРОЛЬ ИНТЕНСИВНОСТИ: Вы — режиссер аромата в своем доме! Используйте 1-2 палочки для ненавязчивого фона или все 5 для яркого, выразительного звучания. Просто переверните палочки, чтобы обновить волну аромата.
-· 🏠 СОЗДАЕТ АТМОСФЕРУ: Один диффузор эффективно ароматизирует пространство до 20 м² (гостиная, спальня, кабинет). Для лучшего результата разместите его на высоте около 1 метра.
-· 🛡 БЕЗОПАСНОСТЬ И СЕРТИФИКАЦИЯ: Абсолютно безопасен для ежедневного использования даже в комнате с детьми и домашними животными. Вся продукция имеет сертификаты соответствия.
-· 🎨 ЭКОЛОГИЧЕСКОЕ ПРОИЗВОДСТВО: Каждый флакон создается с вниманием к деталям вручную. Это делает ваш экземпляр по-настоящему уникальным.
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-
-· Объем флакона: 50 мл
-· Тип: Ароматический диффузор 
-· Основной аромат: Древесно-амбровый, с хвойными и цветочными нотами
-· Страна-производитель диффузора - Россия; страна-производитель сырья: Франция, Германия
-· Интенсивность аромата: Регулируемая (количество палочек)
-· Время ароматизации: Яркий аромат — до 3 мес., общий — до 6 мес.
-· Площадь воздействия: до 20 м²
-· Комплектация: Флакон + 5 фибровых палочек
-· Производство: Ручное, экологическое
-· Назначение: Для дома, офиса, в качестве подарка</h4-->
-{% endblock %}
-
-<!-- Bootstrap core JavaScript -->
-<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-<!-- FontAwesome script -->
-<script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
+    <!-- FontAwesome script -->
+    <script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
 
 </body>
 

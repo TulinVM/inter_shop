@@ -1,2 +1,8 @@
 <h2>✅ Заказ успешно оформлен!</h2>
+{% csrf_token %}
+<p>Спасибо, {{ orders_order.customer_name }}!</p>
 <a href="/">Вернуться в магазин</a>
+<a class="btn btn-success btn-lg float-right" href="{% url 'orders:confirmed' %}">
+    Оформить заказ2
+</a>
+#<a href="C:\MyWorks\Magazin\Inter_shop\products\templates\orders\confirmed_orders.html">Заказы</a>
