@@ -17,9 +17,9 @@
      {% endfor %}
 
      <h3>Итого: {{ baskets.total_sum }}</h3>
-     
+     <!--form method="post" action="{% url 'orders:confirm_order' order.id %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-success">
                Подтвердить заказ
           </button>
-   
+     </form-->

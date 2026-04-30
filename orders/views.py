@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from products.models import Basket
 from .models import Order, OrderItem
+from django.shortcuts import redirect, get_object_or_404
 
 
 def order_create(request):
@@ -42,8 +43,18 @@ def success(request):
 
 
 def confirmed_orders(request):
-    orders = Order.objects.filter(status='confirmed')
+    orders = Order.objects.filter(user=request.user, status='confirmed')
 
     return render(request, 'orders/confirmed_orders.html', {
         'orders': orders
     })
+
+def confirm_order(request, order_id):
+    if request.method == 'POST':
+        order = get_object_or_404(Order, id=order_id)
+
+        # меняем статус
+        order.status = 'confirmed'
+        order.save()
+
+    return redirect('orders:confirmed_orders')

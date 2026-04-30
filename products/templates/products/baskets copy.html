@@ -31,24 +31,21 @@
         <h4 class="float-right">{{ baskets.total_sum }}</h4>
     </div>
 </div>
-
-<a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
+<!--a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
+        Оформить заказ
+    </a-->
+<!--a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
     Оформить заказ
-</a>
+</a-->
 <br>
 <br>
 <br>
-<a class="btn btn-success btn-lg float-right" href="{% url 'orders:confirmed_orders' %}">
-
-    Мои подтвержденные заказы
-</a>
+<!--a class="btn btn-success btn-lg float-right" href="{% url 'orders:confirm_order' %}">
+    Подтвержденные заказ
+</a-->
 
 {% else %}
 <h4 class="mt-3 mb-3 text-center">
     Корзина пуста
 </h4>
 {% endif %}
-<a class="btn btn-success btn-lg float-right" href="{% url 'orders:confirmed_orders' %}">
-
-    Мои подтвержденные заказы
-</a>

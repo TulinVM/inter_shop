@@ -13,6 +13,7 @@ class Order(models.Model):
      STATUS_CHOICES = (
         ('new', 'Новый'),
         ('confirmed', 'Подтвержден'),
+        ('shipped', 'Отправлен'),
         
     )
      

@@ -1,38 +1,31 @@
-<h2>Оформление заказа</h2>
+<h2>Подтвержденные заказы2</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {% for basket in baskets %}
-    <p> Добрый день {{ basket.user }} </p>
-    {% endfor %}
-    <input type="text" name="name" placeholder="Ваше имя" required class="form-control mb-2">
-    <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-2"></textarea>
-    <textarea name="address" placeholder="Контактный телефон" required class="form-control mb-2"></textarea>
-
-    <h4>Ваш заказ:</h4>
-    {% for basket in baskets %}
-    <p>
-    <p>{{ basket.user }} - {{ basket.product.name }} x {{ basket.quantity }} = {{ basket.sum }}
-    </p>
-    {% endfor %}
-
-    <h3>Итого: {{ baskets.total_sum }}</h3>
-
-    <h2>Подтвержденные заказы</h2>
-
-    {% for order in orders %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <p><strong>Имя:</strong> {{ order.customer_name }}</p>
-            <p><strong>Адрес:</strong> {{ order.address }}</p>
-            <p><strong>Дата:</strong> {{ order.created }}</p>
-
-            <h5>Товары:</h5>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Заказ</th>
+            <th>Дата</th>
+            <th>Товар</th>
+            <th>Количество</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
             {% for item in order.items.all %}
-            <p>{{ item.product.name }} x {{ item.quantity }}</p>
+            <tr>
+                <td>№{{ order.id }}</td>
+                <td>{{ order.created }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }}</td>
+            </tr>
             {% endfor %}
-        </div>
-    </div>
-    {% empty %}
-    <p>Нет подтвержденных заказов</p>
-    {% endfor %}
+        {% empty %}
+        <tr>
+            <td colspan="5">Нет заказов</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/">Вернуться в магазин</a>
