@@ -1,0 +1,35 @@
+<h2>Мои заказы</h2>
+
+<a href="?status=new">Новые</a> |
+<a href="?status=confirmed">Подтвержденные</a> |
+<a href="?status=cancelled">Отмененные</a>
+
+<hr>
+
+{% for order in orders %}
+<div class="card mb-3 p-3">
+    <p><strong>Заказ #{{ order.id }}</strong></p>
+    <p>Статус: <span id="status-{{ order.id }}">{{ order.status }}</span></p>
+    <p>Дата: {{ order.created }}</p>
+
+    <a href="{% url 'orders:order_detail' order.id %}">
+        Подробнее
+    </a>
+
+    <div class="mt-2">
+        {% if order.status == 'new' %}
+            <button class="btn btn-success confirm-btn"
+                    data-order-id="{{ order.id }}">
+                Подтвердить
+            </button>
+
+            <button class="btn btn-danger cancel-btn"
+                    data-order-id="{{ order.id }}">
+                Отменить
+            </button>
+        {% endif %}
+    </div>
+</div>
+{% empty %}
+<p>Нет заказов</p>
+{% endfor %}

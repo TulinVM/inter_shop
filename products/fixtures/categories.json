@@ -19,7 +19,7 @@
     "model": "products.productcategory",
     "pk": 3,
     "fields": {
-      "name": "Обувь",
+      "name": "Ароматические диффузоры",
       "description": ""
     }
   },
@@ -27,7 +27,7 @@
     "model": "products.productcategory",
     "pk": 4,
     "fields": {
-      "name": "Аксессуары",
+      "name": "Жидкое мыло",
       "description": ""
     }
   },
@@ -35,7 +35,7 @@
     "model": "products.productcategory",
     "pk": 5,
     "fields": {
-      "name": "Подарки",
+      "name": "Крема",
       "description": ""
     }
   }

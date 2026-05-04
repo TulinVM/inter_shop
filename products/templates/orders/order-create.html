@@ -17,9 +17,19 @@
      {% endfor %}
 
      <h3>Итого: {{ baskets.total_sum }}</h3>
-     
+
+
+
+     <form method="post" action="{% url 'orders:order_status' order.id %}">
           {% csrf_token %}
-          <button type="submit" class="btn btn-success">
-               Подтвердить заказ
+         
+          <a type="hidden" name="order_id" value="{{ order.id }}">
+
+          <button type="submit" class="btn
+        {% if order.status == 'confirmed' %}btn-success
+        {% elif order.status == 'new' %}btn-danger
+        {% else %}btn-secondary{% endif %}">
+          
+              {{ order.status }}Подтвердить
           </button>
-   
+     </form>
