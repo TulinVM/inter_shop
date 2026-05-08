@@ -7,7 +7,6 @@
      {% endfor %}
      <input type="text" name="name" placeholder="Ваше имя" required class="form-control mb-2">
      <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-2"></textarea>
-     <textarea name="address" placeholder="Контактный телефон" required class="form-control mb-2"></textarea>
 
      <h4>Ваш заказ:</h4>
      {% for basket in baskets %}
@@ -20,16 +19,15 @@
 
 
 
-     <form method="post" action="{% url 'orders:order_status' order.id %}">
+     <form method="post" action="{% url 'orders:order_status' %}">
           {% csrf_token %}
-         
-          <a type="hidden" name="order_id" value="{{ order.id }}">
-
+          <input type="hidden" name="order_id" value="{{ order.id }}">
+        
           <button type="submit" class="btn
-        {% if order.status == 'confirmed' %}btn-success
-        {% elif order.status == 'new' %}btn-danger
-        {% else %}btn-secondary{% endif %}">
-          
-              {{ order.status }}Подтвердить
+               {% if order.status == 'confirmed' %}>btn-success
+               {% elif order.status == 'shipped' %}btn-danger
+               {% else %}btn-info{% endif %}">
+               {{ order.status }}
+               Подтвердить
           </button>
      </form>

@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from products.models import Basket
 from .models import Order, OrderItem
 from django.shortcuts import redirect, get_object_or_404
 
-#Order.objects.filter(user=request.user)
-
+# Order.objects.filter(user=request.user)
+from phonenumber_field.modelfields import PhoneNumberField
 
 def order_create(request):
     baskets = Basket.objects.filter(user=request.user)
@@ -15,11 +15,20 @@ def order_create(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         address = request.POST.get('address')
+        # status = request.POST.get('status')
+        # phone = request.POST.get('phone')
 
         order = Order.objects.create(
             user=request.user,
             customer_name=name,
-            address=address
+            address=address,
+            status='confirmed',
+            # phone = 'phone',
+
+
+        #     widgets = {
+        #    'status': forms.order_status(attrs={'type': 'STATUS_CHOICES'}),
+        # }
         )
 
         # перенос корзины в заказ
@@ -54,8 +63,7 @@ def confirmed_orders(request):
 def confirm_order(request, order_id):
     if request.method == 'POST':
         order = get_object_or_404(Order, id=order_id, user=request.user)
-        print(request.user)
-        
+     
         # меняем статус
         order.status = 'confirmed'
         order.save()
@@ -81,20 +89,28 @@ def user_orders(request):
 
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
+    
+    print("USER:", request.user)###
+    print("ORDER USER:", order.user)###
 
     return render(request, 'orders/order_detail.html', {
         'order': order
     })
 #########
-def toggle_order_status(request):
+
+def order_status(request, order_id):
     if request.method == 'POST':
         order_id = request.POST.get('order_id')
-
+       
+        print("NEW STATUS:", order_id)###
         order = get_object_or_404(
             Order,
             id=order_id,
             user=request.user
         )
+
+        print("USER:", request.user)###
+        print("ORDER USER:", order.user)###
 
         # переключение статуса
         if order.status == Order.STATUS_NEW:
@@ -107,9 +123,17 @@ def toggle_order_status(request):
             order.status = Order.STATUS_NEW
 
         order.save()
+        print("NEW STATUS:", order.status) ###
        
     return redirect(request.META.get('HTTP_REFERER', 'orders:user_orders'))
 
 
+# # Получаем выбранное значение фильтра
+#         selected_asu = self.request.GET.get('name_asu')
+#         print("Выбранное АСУ:", selected_asu)  # Вывод в консоль
+#        # messages.info(self.request, f"Вы выбрали АСУ: {selected_asu}")  # Вывод в браузере
 
+#         selected_uso = self.request.GET.get('name_uso')
+#         print("Выбранное УСО:", selected_uso)  # Вывод в консоль
+#         # messages.info(self.request, f"Вы выбрали УСО: {selected_uso}")  # Вывод в браузере
 

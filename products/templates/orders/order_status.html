@@ -1,0 +1,13 @@
+<title>Подтвердить</title>
+<form method="post" action="{% url 'orders:order_status' order.id %}">
+    {% csrf_token %}
+    valio = {{ order.id }}
+    <button type="submit" class="btn
+               {% if order.status == 'confirmed' %}>btn-success
+               {% elif order.status == 'shipped' %}btn-danger
+               {% else %}btn-info{% endif %}">
+        {{ order.status }}
+        Подтвердить
+    </button>
+</form>
+</head>
