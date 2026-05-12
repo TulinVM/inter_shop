@@ -1,6 +1,12 @@
-<h2>Подтвержденные заказы2</h2>
-
+<h2>Подтвержденные заказы22</h2>
+ {% csrf_token %}
+  Добрый день
+ {% for users_user in users %}
+ {{ user.username }}
+ {% endfor %}
 <table class="table table-striped">
+
+     {% csrf_token %}
     <thead>
         <tr>
             <th>Заказ</th>
@@ -10,9 +16,9 @@
             <th>Цена</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody> {% csrf_token %}
         {% for order in orders %}
-            {% for item in order.items.all %}
+            {% for item in order.items.all %}       
             <tr>
                 <td>№{{ order.id }}</td>
                 <td>{{ order.created }}</td>
