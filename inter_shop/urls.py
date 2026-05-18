@@ -21,6 +21,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 from products.views import IndexView
+from orders.views import order_status
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,6 +30,7 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('users/', include('users.urls', namespace='users')),
     path('orders/', include('orders.urls', namespace='orders')),
+    path('order-status/', order_status, name='order_status'),
     # path('store', include('store.urls')),
 ]
 """

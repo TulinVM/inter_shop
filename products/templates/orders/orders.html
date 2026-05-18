@@ -20,17 +20,27 @@
         Подробнее
     </a>
 
+    <a href="{% url 'orders:create' %}">
+        create
+    </a>
+    <a class="navbar-brand" href="{% url 'index' %}">Интернет магазин</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
     <div class="mt-2">
         {% if order.status == 'new' %}
-            <button class="btn btn-success confirm-btn"
-                    data-order-id="{{ order.id }}">
+
+        <form method="post" action="{% url 'orders:order_status' %}">
+            {% csrf_token %}
+            <input type="hidden" name="order_id" value="{{ order.id }}">
+
+            <button type="submit" class="btn btn-success">
                 Подтвердить
             </button>
-
-            <button class="btn btn-danger cancel-btn"
-                    data-order-id="{{ order.id }}">
-                Отправлен
-            </button>
+        </form>
         {% endif %}
     </div>
 </div>
