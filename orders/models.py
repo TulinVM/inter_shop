@@ -10,18 +10,23 @@ class Contact(models.Model):
 
 
 class Order(models.Model):
-     STATUS_CHOICES = (
+     
+    STATUS_NEW = 'new'
+    STATUS_CONFIRMED = 'confirmed'
+    STATUS_SHIPPED = 'shipped'
+
+    STATUS_CHOICES = (
         ('new', 'Новый'),
         ('confirmed', 'Подтвержден'),
         ('shipped', 'Отправлен'),
         
     )
      
-     user = models.ForeignKey(User, on_delete=models.CASCADE)
-     customer_name = models.CharField(max_length=255)
-     address = models.TextField()
-     created = models.DateTimeField(auto_now_add=True)
-     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer_name = models.CharField(max_length=255)
+    address = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     #  phone = models.PhoneNumberField(blank=True, null=True)
      
 

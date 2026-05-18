@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from common.views import TitleMixin
 from users.forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 from users.models import EmailVerification, User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class UserLoginView(TitleMixin, LoginView):
@@ -25,11 +26,13 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     title = 'Store - Регистрация'
 
 
-class UserProfileView(TitleMixin, UpdateView):
+class UserProfileView(LoginRequiredMixin, TitleMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     template_name = 'users/profile.html'
     title = 'Store - Личный кабинет'
+
+    login_url = '/users/login/'
 
     def get_success_url(self):
         return reverse_lazy('users:profile', args=(self.object.id,))

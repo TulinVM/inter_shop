@@ -1,8 +1,12 @@
-<h2>Мои заказы</h2>
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Мои заказы11</h2>
 
 <a href="?status=new">Новые</a> |
 <a href="?status=confirmed">Подтвержденные</a> |
-<a href="?status=cancelled">Отмененные</a>
+<a href="?status=shipped">Отправлен</a>
 
 <hr>
 
@@ -25,7 +29,7 @@
 
             <button class="btn btn-danger cancel-btn"
                     data-order-id="{{ order.id }}">
-                Отменить
+                Отправлен
             </button>
         {% endif %}
     </div>
@@ -33,3 +37,4 @@
 {% empty %}
 <p>Нет заказов</p>
 {% endfor %}
+{% endblock %}

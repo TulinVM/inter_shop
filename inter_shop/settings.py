@@ -23,12 +23,13 @@ SECRET_KEY = "django-insecure-ber6u&+9utzuyiq8c$hgt%4bvz35b!-kji06s^skf@i-kq2d#5
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
                  '82.202.142.110',
                  '192.168.1.52',
-                 '192.168.0.100',]
+                 '192.168.0.101',]
 DOMAIN_NAME = "http://localhost:8000"
 
 # Application definition
@@ -98,6 +99,18 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+# DATABASES = {
+#     "default": {
+#         # "ENGINE": "django.db.backends.postgresql",
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "shop_db",
+#         "USER": "shop_user",
+#         "PASSWORD": "strong_password",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

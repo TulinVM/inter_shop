@@ -5,7 +5,7 @@
      {% for basket in baskets %}
      <p> Добрый день {{ basket.user }} </p>
      {% endfor %}
-     <input type="text" name="name" placeholder="Ваше имя" required class="form-control mb-2">
+     <input type="text" name="name" placeholder="Имя получателя" required class="form-control mb-2">
      <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-2"></textarea>
 
      <h4>Ваш заказ:</h4>
@@ -17,16 +17,17 @@
 
      <h3>Итого: {{ baskets.total_sum }}</h3>
 
-
-
      <form method="post" action="{% url 'orders:order_status' %}">
           {% csrf_token %}
+
           <input type="hidden" name="order_id" value="{{ order.id }}">
-        
+
           <button type="submit" class="btn
-               {% if order.status == 'confirmed' %}>btn-success
+               {% if order.status == 'confirmed' %}btn-success
                {% elif order.status == 'shipped' %}btn-danger
-               {% else %}btn-info{% endif %}">
+               {% else %}
+               btn-info
+               {% endif %}">
                {{ order.status }}
                Подтвердить
           </button>
