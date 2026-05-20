@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+{% csrf_token %}
 <h2>Мои заказы11</h2>
 
 <a href="?status=new">Новые</a> |
@@ -9,10 +10,12 @@
 <a href="?status=shipped">Отправлен</a>
 
 <hr>
-
+{% csrf_token %}
 {% for order in orders %}
 <div class="card mb-3 p-3">
-    <p><strong>Заказ #{{ order.id }}</strong></p>
+   
+    <p><strong>Заказ №{{ order.id }}</strong></p>
+    <p><strong>Клиент:{{order.user}}</strong></p>
     <p>Статус: <span id="status-{{ order.id }}">{{ order.status }}</span></p>
     <p>Дата: {{ order.created }}</p>
 

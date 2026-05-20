@@ -26,16 +26,18 @@ class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
     title = 'Store - Регистрация'
 
 
-class UserProfileView(LoginRequiredMixin, TitleMixin, UpdateView):
+class UserProfileView(LoginRequiredMixin, UpdateView): #TitleMixin, 
     model = User
     form_class = UserProfileForm
     template_name = 'users/profile.html'
     title = 'Store - Личный кабинет'
 
-    login_url = '/users/login/'
+    # login_url = '/users/login/'
 
-    def get_success_url(self):
-        return reverse_lazy('users:profile', args=(self.object.id,))
+    # def get_success_url(self):
+    #     return reverse_lazy('users:profile', args=(self.object.id,))
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 class EmailVerificationView(TitleMixin, TemplateView):
