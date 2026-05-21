@@ -6,16 +6,17 @@ class OrderlForm(forms.ModelForm):
     class Meta:
         model = Order
         fields =  [  #'__all__'
-            
+            'id',
             'user',
-            'address',
+            # 'address',
             'status',
-            'phone',
-      
+            # 'phone',
+            'created',
+                           
         ]      
 
-        widgets = {
-            'phone': PhoneNumberPrefixWidget(initial='US'),
+        # widgets = {
+        #     'phone': PhoneNumberPrefixWidget(initial='US'),
            
         }
 

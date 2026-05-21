@@ -7,8 +7,11 @@
      {% endfor %}
      <input type="text" name="name" placeholder="Имя" required class="form-control mb-2">
      <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-2"></textarea>
-
-     <h4>Ваш заказ:</h4>
+     
+     {% csrf_token %}
+    
+     <h4>Ваш заказ № {{ order.id }}</h4>
+  
      {% for basket in baskets %}
      <p>
      <p>{{ basket.user }} - {{ basket.product.name }} x {{ basket.quantity }} = {{ basket.sum }}
