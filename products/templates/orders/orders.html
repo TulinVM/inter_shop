@@ -48,12 +48,17 @@
                             <td>{{ order.status }}</td>
                             <td>{{ order.created }}</td>
 
-
-
+                            {% csrf_token %}
+                            {% if order.status == 'new' %}
                             <td>
-                                <a href="{% url 'orders:create' %}">Просмотр1</a>
+                                <a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
+                                    Оформить заказ1
+                                </a>
+
+                                <!-- <a href="{% url 'orders:create' %}">Просмотр1</a> -->
                             </td>
 
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -61,47 +66,10 @@
             </div>
 
             {% else %}
-            <div class="result-wrapper">
-                <span class="info-if-doesnt-exists">У вас нет дефектов</span>
-                {% endif %}
-
-            </div>
-
-            <p><strong>Заказ №{{ order.id }}</strong></p>
-            <p><strong>Клиент:{{order.user}}</strong></p>
-            <p>Статус: <span id="status-{{ order.id }}">{{ order.status }}</span></p>
-            <p>Дата: {{ order.created }}</p>
-
-            <a>
-                Подробнее
-            </a>
-
-            <a href="{% url 'orders:create' %}">
-                create
-            </a>
-            <a class="navbar-brand" href="{% url 'orders:create' %}">Интернет магазин</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-
-            <div class="mt-2">
-                {% csrf_token %}
-                {% if order.status == 'new' %}
-
-                <form method="post" action="{% url 'orders:create' %}">
-
-                    <input type="hidden" name="order_id" value="{{ order.id }}">
-
-                    <button type="submit" class="btn btn-success">
-                        Подтвердить2
-                    </button>
-                </form>
-                {% endif %}
-            </div>
+            <p>Нет заказов</p>
+            {% endif %}
         </div>
-
-        <p>Нет заказов</p>
+        <hr>
+        <hr>
 
         {% endblock %}

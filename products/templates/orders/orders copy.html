@@ -3,6 +3,9 @@
 
 {% block content %}
 {% csrf_token %}
+<hr>
+<hr>
+<hr>
 <h2>Мои заказы11</h2>
 
 <a href="?status=new">Новые</a> |
@@ -13,7 +16,7 @@
 {% csrf_token %}
 {% for order in orders %}
 <div class="card mb-3 p-3">
-   
+
     <p><strong>Заказ №{{ order.id }}</strong></p>
     <p><strong>Клиент:{{order.user}}</strong></p>
     <p>Статус: <span id="status-{{ order.id }}">{{ order.status }}</span></p>
@@ -26,19 +29,19 @@
     <a href="{% url 'orders:create' %}">
         create
     </a>
-    <a class="navbar-brand" href="{% url 'orders:create' %}">Интернет магазин</a>
+    <!-- <a class="navbar-brand" href="{% url 'orders:create' %}">Интернет магазин</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
 
 
     <div class="mt-2">
-         {% csrf_token %}
+        {% csrf_token %}
         {% if order.status == 'new' %}
 
         <form method="post" action="{% url 'orders:create' %}">
-           
+
             <input type="hidden" name="order_id" value="{{ order.id }}">
 
             <button type="submit" class="btn btn-success">
