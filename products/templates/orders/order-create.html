@@ -1,3 +1,14 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'vendor/css/oreder-create.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<p></p>
+<p></p>
+
 <h2>Оформление заказа</h2>
 
 <form method="post">
@@ -5,8 +16,10 @@
      {% for basket in baskets %}
      <p> Добрый день {{ basket.user }} </p>
      {% endfor %}
-     <input type="text" name="name" placeholder="Имя" required class="form-control mb-2">
-     <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-2"></textarea>
+     <input type="text" name="name" placeholder="Имя" required class="form-control mb-2" cols="45">
+     <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-1"></textarea>
+     <textarea name="phone" placeholder="Номер телефона" required class="form-control mb-1"></textarea>
+
      
      {% csrf_token %}
     
@@ -35,3 +48,5 @@
                Подтвердить
           </button>
      </form>
+
+{% endblock %}
