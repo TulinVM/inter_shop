@@ -8,7 +8,7 @@ class OrderlForm(forms.ModelForm):
         fields =  [  #'__all__'
             'id',
             'user',
-            # 'address',
+            'address',
             'status',
             # 'phone',
             'created',
@@ -18,5 +18,5 @@ class OrderlForm(forms.ModelForm):
         # widgets = {
         #     'phone': PhoneNumberPrefixWidget(initial='US'),
            
-        }
+        # }
 

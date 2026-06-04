@@ -11,45 +11,70 @@ from phonenumber_field.modelfields import PhoneNumberField
 def order_create(request):
     baskets = Basket.objects.filter(user=request.user)
 
-    if not baskets.exists():
-        return redirect('products:index')
 
+    # if not baskets.exists():
+    #     return redirect('products:index')
+
+    # if request.method == 'POST':
+    #     name = request.POST.get('name')
+    #     address = request.POST.get('address')
+    #     status = request.POST.get('status')
+    #     phone = request.POST.get('phone')
+
+    #     order = Order.objects.create(
+    #         user=request.user,
+    #         customer_name=name,
+    #         address=address,
+    #         status='confirmed',
+    #         phone = 'phone',
+
+###########
     if request.method == 'POST':
-        name = request.POST.get('name')
-        address = request.POST.get('address')
-        # status = request.POST.get('status')
-        # phones = request.POST.get('phone')
-
         order = Order.objects.create(
             user=request.user,
-            customer_name=name,
-            address=address,
-            status='new',
-            # phone ='phone',
-
+            name=request.POST['name'],
+            address=request.POST['address'],
+            phone=request.POST['phone'],
+        
 
         #     widgets = {
-        #    'status': forms.order_status(attrs={'type': 'STATUS_CHOICES'}),
+        #    'status': order_status(attrs={'type': 'STATUS_CHOICES'}),
         # }
         )
 
-        # перенос корзины в заказ
-        for basket in baskets:
-            OrderItem.objects.create(
-                order=order,
-                product=basket.product,
-                quantity=basket.quantity,
-                price=basket.product.price
-            )
-
-        # очистка корзины
-        baskets.delete()
-
-        return redirect('orders:success')
-
-    return render(request, 'orders/order-create.html', {
-        'baskets': baskets
+        return render(request, 'orders/order-create.html', {
+        # return render(request, 'orders/order_detail.html', {
+            'baskets': baskets,
+            'orders': order,
+        })
+    return render(request, 'orders/order_create.html', {
+        'baskets': baskets,
     })
+
+    #     # перенос корзины в заказ
+    # for basket in baskets:
+    #         OrderItem.objects.create(
+    #             order=order,
+    #             product=basket.product,
+    #             quantity=basket.quantity,
+    #             price=basket.product.price
+    #         )
+
+    #     # очистка корзины
+    # baskets.delete()
+
+
+    # return redirect('orders:success')
+    
+
+    # return render(request, 'orders/order-create.html', {
+    #     # return render(request, 'orders/order_detail.html', {
+    #         'baskets': baskets,
+    #         'orders': order,
+    # })
+    # return render(request, 'orders/order_create.html', {
+    #     'baskets': baskets,
+    # })
 
 @login_required
 def success(request):
@@ -93,10 +118,10 @@ def user_orders(request):
 
 @login_required
 def order_detail(request, order_id):
-    orders = get_object_or_404(Order, id=order_id, user=request.user)
+    order = get_object_or_404(Order, id=order_id, user=request.user)
     
     return render(request, 'orders/order_detail.html', {
-        'order': orders
+        'order': order
     })
 #########
 @login_required

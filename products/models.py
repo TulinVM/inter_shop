@@ -1,6 +1,7 @@
 from django.db import models
 
 from users.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ProductCategory(models.Model):
@@ -59,5 +60,5 @@ class Basket(models.Model):
 from phonenumber_field.modelfields import PhoneNumberField
 
 class Contact(models.Model):
-    phone = PhoneNumberField()
+    phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True)
 

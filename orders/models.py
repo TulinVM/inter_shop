@@ -4,9 +4,10 @@ from products.models import Product
 from phonenumber_field.modelfields import PhoneNumberField
 
 class Contact(models.Model):
-    phone = PhoneNumberField()
-    # name = models.CharField(max_length=100)
-    # phone = PhoneNumberField(region='RU')  # По умолчанию для России
+    # phone = PhoneNumberField()
+    name = models.CharField(max_length=100)
+    # phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True)  
+    # По умолчанию для России
 
 
 class Order(models.Model):
@@ -27,7 +28,7 @@ class Order(models.Model):
     address = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
-    #  phone = models.PhoneNumberField(blank=True, null=True)
+    phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True) 
      
 
 

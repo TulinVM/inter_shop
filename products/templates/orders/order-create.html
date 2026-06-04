@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link href="{% static 'vendor/css/oreder-create.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/css/oreder-create.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -18,13 +18,18 @@
      {% endfor %}
      <input type="text" name="name" placeholder="Имя" required class="form-control mb-2" cols="45">
      <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-1"></textarea>
-     <textarea name="phone" placeholder="Номер телефона" required class="form-control mb-1"></textarea>
+     <input 
+    type="tel"
+    name="phone"
+    placeholder="Номер телефона = +79991234567"
+    required
+    class="form-control mb-1">
 
-     
+
      {% csrf_token %}
-    
+
      <h4>Ваш заказ № {{ order.id }}</h4>
-  
+     
      {% for basket in baskets %}
      <p>
      <p>{{ basket.user }} - {{ basket.product.name }} x {{ basket.quantity }} = {{ basket.sum }}
@@ -49,4 +54,4 @@
           </button>
      </form>
 
-{% endblock %}
+     {% endblock %}
