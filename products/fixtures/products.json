@@ -3,72 +3,240 @@
     "model": "products.product",
     "pk": 1,
     "fields": {
-      "name": "Худи черного цвета с монограммами adidas Originals",
-      "description": "Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.",
-      "price": "6090.00",
+      "name": "MYRRH & TONKA. HAND SOAP",
+      "description": "Мыло для рук. 100 ML",
+      "price": "1090.00",
       "quantity": 10,
-      "image": "/static/vendor/img/products/Black-Dr-Martens-shoes.png",
-      "category": 1
+      "image": "/static/vendor/img/products/IMG_2851.jpg",
+      "category": 2
     }
   },
   {
     "model": "products.product",
     "pk": 2,
     "fields": {
-      "name": "Синяя куртка The North Face",
-      "description": "Гладкая ткань. Водонепроницаемое покрытие. Легкий и теплый пуховый наполнитель.",
-      "price": "23725.00",
+      "name": "MYRRH & TONKA. HAIR & BODY WASH",
+      "description": "Гель для волос и тела. 100 ML",
+      "price": "1725.00",
       "quantity": 15,
-      "image": "/static/vendor/img/products/Blue-jacket-The-North-Face.png",
-      "category": 2
+      "image": "/static/vendor/img/products/IMG_2852.jpg",
+      "category": 4
     }
   },
   {
     "model": "products.product",
     "pk": 3,
     "fields": {
-      "name": "Коричневый спортивный oversized-топ ASOS DESIGN",
-      "description": "Материал с плюшевой текстурой. Удобный и мягкий.",
-      "price": "3390.00",
+      "name": "BACCARAT ROUGE. HAND & BODY CREAM",
+      "description": "Крем для рук и тела. 50 ML",
+      "price": "1390.00",
       "quantity": 20,
-      "image": "/static/vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png",
-      "category": 1
+      "image": "/static/vendor/img/products/IMG_2849.jpg",
+      "category": 3
     }
   },
   {
     "model": "products.product",
     "pk": 4,
     "fields": {
-      "name": "Черный рюкзак Nike Heritage",
-      "description": "Плотная ткань. Легкий материал.",
-      "price": "2340.00",
+      "name": "BACCARAT VANILLE. HAND SOAD",
+      "description": "Мыло для рук. 50 ML",
+      "price": "1340.00",
       "quantity": 5,
-      "image": "/static/vendor/img/products/Black-Nike-Heritage-backpack.png",
-      "category": 4
+      "image": "/static/vendor/img/products/IMG_2850.jpg",
+      "category": 2
     }
   },
   {
     "model": "products.product",
     "pk": 5,
     "fields": {
-      "name": "Черные туфли на платформе с 3 парами люверсов Dr Martens 1461 Bex",
-      "description": "Гладкий кожаный верх. Натуральный материал.",
-      "price": "13590.00",
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1590.00",
       "quantity": 12,
-      "image": "/static/vendor/img/products/Black-Dr-Martens-shoes.png",
-      "category": 3
+      "image": "/static/vendor/img/IMG_2819.jpg",
+      "category": 1
     }
   },
   {
     "model": "products.product",
     "pk": 6,
     "fields": {
-      "name": "Темно-синие широкие строгие брюки ASOS DESIGN",
-      "description": "Легкая эластичная ткань сирсакер Фактурная ткань.",
-      "price": "2890.00",
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
       "quantity": 25,
-      "image": "/static/vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png",
+      "image": "/static/vendor/img/products/IMG_2820.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2821.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2823.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2827.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2843.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2846.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+      "name": "BACCARAT ROUGE. DIFFUSER",
+      "description": "ДИФФУЗОР. 50 ML",
+      "price": "1890.00",
+      "quantity": 25,
+      "image": "/static/vendor/img/products/IMG_2848.jpg",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+      "name": "MYRRH & TONKA. HAIR & BODY WASH",
+      "description": "Гель для волос и тела. 100 ML",
+      "price": "1725.00",
+      "quantity": 15,
+      "image": "/static/vendor/img/products/IMG_2852.jpg",
+      "category": 4
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+      "name": "MYRRH & TONKA. HAIR & BODY WASH",
+      "description": "Гель для волос и тела. 100 ML",
+      "price": "1725.00",
+      "quantity": 15,
+      "image": "/static/vendor/img/products/IMG_2852.jpg",
+      "category": 4
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+      "name": "BACCARAT VANILLE. HAND SOAD",
+      "description": "Мыло для рук. 50 ML",
+      "price": "1340.00",
+      "quantity": 5,
+      "image": "/static/vendor/img/products/IMG_2850.jpg",
       "category": 2
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+      "name": "BACCARAT VANILLE. HAND SOAD",
+      "description": "Мыло для рук. 50 ML",
+      "price": "1340.00",
+      "quantity": 5,
+      "image": "/static/vendor/img/products/IMG_2850.jpg",
+      "category": 2
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+      "name": "BACCARAT VANILLE. HAND SOAD",
+      "description": "Мыло для рук. 50 ML",
+      "price": "1340.00",
+      "quantity": 5,
+      "image": "/static/vendor/img/products/IMG_2850.jpg",
+      "category": 2
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+      "name": "BACCARAT ROUGE. HAND & BODY CREAM",
+      "description": "Крем для рук и тела. 50 ML",
+      "price": "1390.00",
+      "quantity": 20,
+      "image": "/static/vendor/img/products/IMG_2849.jpg",
+      "category": 3
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+      "name": "BACCARAT ROUGE. HAND & BODY CREAM",
+      "description": "Крем для рук и тела. 50 ML",
+      "price": "1390.00",
+      "quantity": 20,
+      "image": "/static/vendor/img/products/IMG_2849.jpg",
+      "category": 3
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+      "name": "BACCARAT ROUGE. HAND & BODY CREAM",
+      "description": "Крем для рук и тела. 50 ML",
+      "price": "1390.00",
+      "quantity": 20,
+      "image": "/static/vendor/img/products/IMG_2849.jpg",
+      "category": 3
     }
   }
 ]

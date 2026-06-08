@@ -10,7 +10,7 @@ class OrderlForm(forms.ModelForm):
             'user',
             'address',
             'status',
-            # 'phone',
+            'phone',
             'created',
                            
         ]      

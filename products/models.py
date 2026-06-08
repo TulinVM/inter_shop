@@ -46,7 +46,7 @@ class Basket(models.Model):
     product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField(default=0)
     created_timestamp = models.DateTimeField(auto_now_add=True)
-
+    phone = PhoneNumberField(region='RU', null=False, blank=False)
     objects = BasketQuerySet.as_manager()
 
     def __str__(self):
@@ -60,5 +60,5 @@ class Basket(models.Model):
 from phonenumber_field.modelfields import PhoneNumberField
 
 class Contact(models.Model):
-    phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True)
+    phone = PhoneNumberField(region='RU', null=False, blank=False)
 

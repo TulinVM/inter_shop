@@ -18,14 +18,14 @@ def order_create(request):
         name = request.POST.get('name')
         address = request.POST.get('address')
         # status = request.POST.get('status')
-        # phones = request.POST.get('phone')
+        phone = request.POST.get('phone')
 
         order = Order.objects.create(
             user=request.user,
             customer_name=name,
             address=address,
             status='new',
-            # phone ='phone',
+            phone =phone,
 
 
         #     widgets = {

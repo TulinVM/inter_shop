@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Contact(models.Model):
     # phone = PhoneNumberField()
     name = models.CharField(max_length=100)
-    # phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True)  
+    # phone = PhoneNumberField(region='RU', null=False, blank=False)  
     # По умолчанию для России
 
 
@@ -28,7 +28,7 @@ class Order(models.Model):
     address = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
-    phone = PhoneNumberField(region='RU', null=False, blank=False, unique=True) 
+    phone = PhoneNumberField(region='RU', null=False, blank=False) 
      
 
 

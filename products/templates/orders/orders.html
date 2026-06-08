@@ -4,7 +4,7 @@
 {% block content %}
 {% csrf_token %}
 <hr>
-<hr>
+<hr>"orders.html"
 <h2>Мои заказы</h2>
 
 <a href="?status=new">Новые</a> |
@@ -44,7 +44,7 @@
                                 </div>
                             </td>
                             <td>{{ order.id }}</td>
-                            <td>{{order.user}}</td>
+                            <td>{{ order.user }}</td>
                             <td>{{ order.status }}</td>
                             <td>{{ order.created }}</td>
 
@@ -52,7 +52,7 @@
                             {% if order.status == 'new' %}
                             <td>
                                 <a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
-                                    Оформить заказ
+                                    Оформить заказ2
                                 </a>
 
                                 <!-- <a href="{% url 'orders:create' %}">Просмотр1</a> -->
