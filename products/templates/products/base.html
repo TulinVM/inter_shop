@@ -80,6 +80,16 @@
                     {% endif %}
                 </ul>
             </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:profile1' user.id %}">Корзина 
+                    <i
+                        class="fas fa-shopping-bag">
+                    </i>
+                </a>
+            </li>
+            <!-- <li>
+                                <a class="dropdown-item" href="{% url 'users:profile1' user.id %}">Корзина</a>
+                            </li> -->
         </div>
     </nav>
 

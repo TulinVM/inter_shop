@@ -55,6 +55,13 @@ class Basket(models.Model):
     def sum(self):
         return self.product.price * self.quantity
     
+        # return sum(basket.sum() for basket in self)
+        
+        # return sum(basket.quantity for basket in self)
+
+        # return self.product.price * self.quantity
+
+    
 #from phonenumbers import PhoneNumberField
 
 from phonenumber_field.modelfields import PhoneNumberField

@@ -7,88 +7,77 @@ HAND SOAP
 100 ml
 
 2.Ароматы, пробуждающие чувства.
-MYRRH & TONKA
-HAIR & BODY WASH
+MYRRH & TONKA. HAIR & BODY WASH
 /static/vendor/img/products/IMG_2852.jpg
 Мирра и бобы тонка
 Гель для волос и тела
 100 ml
 
 3.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-HAND & BODY CREAM
+BACCARAT ROUGE. HAND & BODY CREAM
 /static/vendor/img/products/IMG_2849.jpg
 BACCARAT ROUGE
 Крем для рук и тела
 50 ml
 
 4.Ароматы, пробуждающие чувства.
-BACCARAT VANILLE
-HAND SOAD
+BACCARAT VANILLE. HAND SOAD
 /static/vendor/img/products/IMG_2850.jpg
 BACCARAT VANILLE
 Мыло для рук
 50 ml
 
 5.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2819.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 6.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2820.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 7.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2821.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 8.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2823.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 9.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2827.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 10.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2843.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
 11.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2846.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
 50 ml
 
-6.Ароматы, пробуждающие чувства.
-BACCARAT ROUGE
-DIFFUSER
+12.Ароматы, пробуждающие чувства.
+BACCARAT ROUGE. DIFFUSER
 /static/vendor/img/products/IMG_2848.jpg
 BACCARAT ROUGE
 ДИФФУЗОР
