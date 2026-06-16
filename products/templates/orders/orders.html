@@ -28,7 +28,7 @@
                             <th>Клиент |</th>
                             <th>Статус | </th>
                             <th>Дата |</th>
-                            <th>Изменить |</th>
+                            <!-- <th>Изменить |</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -49,16 +49,15 @@
                             <td>{{ order.created }}</td>
 
                             {% csrf_token %}
-                            {% if order.status == 'new' %}
+                            <!-- {% if order.status == 'new' %}
                             <td>
                                 <a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
                                     Оформить заказ2
                                 </a>
 
-                                <!-- <a href="{% url 'orders:create' %}">Просмотр1</a> -->
                             </td>
 
-                            {% endif %}
+                            {% endif %} -->
                         </tr>
                         {% endfor %}
                     </tbody>

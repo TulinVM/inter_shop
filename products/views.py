@@ -50,6 +50,7 @@ class ProductsListView1(TitleMixin, ListView):
 def basket_add(request, product_id):
     product = Product.objects.get(id=product_id)
     baskets = Basket.objects.filter(user=request.user, product=product)
+    basket.sum = basket.quantity * basket.product.price
 
     if not baskets.exists():
         Basket.objects.create(user=request.user, product=product, quantity=1)

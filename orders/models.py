@@ -29,7 +29,14 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     phone = PhoneNumberField(region='RU', null=False, blank=False) 
-     
+
+    @property
+    def total_sum(self):
+        return sum(item.sum for item in self.items.all()) 
+    
+    @property
+    def total_quantity(self):
+        return sum(item.quantity for item in self.items.all())
 
 
 class OrderItem(models.Model):
@@ -37,3 +44,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    @property
+    def sum(self):
+        return self.quantity * self.price
