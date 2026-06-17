@@ -3,8 +3,6 @@ from users.models import User
 from products.models import Product
 from phonenumber_field.modelfields import PhoneNumberField
 
-from .managers import OrderQuerySet
-
 class Contact(models.Model):
     # phone = PhoneNumberField()
     name = models.CharField(max_length=100)
@@ -29,10 +27,8 @@ class Order(models.Model):
     customer_name = models.CharField(max_length=255)
     address = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_NEW)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     phone = PhoneNumberField(region='RU', null=False, blank=False) 
-
-    objects = OrderQuerySet.as_manager()
 
     @property
     def total_sum(self):

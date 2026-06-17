@@ -1,108 +1,126 @@
-from django.shortcuts import render
-from products.models import Basket
+# views.py
+# Теперь вместо обычной функции используем CreateView.
+
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.db import transaction
+from .forms import OrderForm
 from .models import Order, OrderItem
+from products.models import Basket
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
-# Order.objects.filter(user=request.user)
-from phonenumber_field.modelfields import PhoneNumberField
+# Создание заказа
+class OrderCreateView(CreateView):
+    model = Order
+    form_class = OrderForm
+    template_name = 'orders/order-create.html'
+    success_url = reverse_lazy('orders:success')
 
-@login_required
-def order_create(request):
-    baskets = Basket.objects.filter(user=request.user)
-
-    if not baskets.exists():
-        return redirect('products:index')
-
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        address = request.POST.get('address')
-        # status = request.POST.get('status')
-        phone = request.POST.get('phone')
-
-        order = Order.objects.create(
-            user=request.user,
-            customer_name=name,
-            address=address,
-            status='new',
-            phone =phone,
-
-
-        #     widgets = {
-        #    'status': forms.order_status(attrs={'type': 'STATUS_CHOICES'}),
-        # }
+    def dispatch(self, request, *args, **kwargs):
+        self.baskets = Basket.objects.filter(
+            user=request.user
         )
 
-        # перенос корзины в заказ
-        for basket in baskets:
-            OrderItem.objects.create(
-                order=order,
-                product=basket.product,
-                quantity=basket.quantity,
-                price=basket.product.price
-            )
+        if not self.baskets.exists():
+            return redirect('products:index')
 
-        # очистка корзины
-        baskets.delete()
+        return super().dispatch(
+            request,
+            *args,
+            **kwargs
+        )
 
-        return redirect('orders:success')
+    def form_valid(self, form):
 
-    return render(request, 'orders/order-create.html', {
-        'baskets': baskets
-    })
+        with transaction.atomic():
 
-@login_required
-def success(request):
-    return render(request, 'orders/success.html')
+            form.instance.user = self.request.user
 
-@login_required
-def confirmed_orders(request):
-    orders = Order.objects.filter(user=request.user, status='confirmed')
+            form.instance.status = Order.STATUS_NEW
 
-    return render(request, 'orders/confirmed_orders.html', {
-        'orders': orders
-    })
+            response = super().form_valid(form)
 
-@login_required
-def confirm_order(request, order_id):
-    if request.method == 'POST':
-        order = get_object_or_404(Order, id=order_id, user=request.user)
-     
-        # меняем статус
-        order.status = 'confirmed'
-        order.save()
+            for basket in self.baskets:
 
-    return redirect('orders:confirmed_orders')
-###
-@login_required
-def profile(request):
-    return render(request, 'orders/profile.html')
+                OrderItem.objects.create(
 
-@login_required
-def user_orders(request):
-    status = request.GET.get('status')
+                    order=self.object,
 
-    orders = Order.objects.filter(user=request.user).order_by('-created')
+                    product=basket.product,
 
-    if status:
-        orders = orders.filter(status=status)
+                    quantity=basket.quantity,
 
-    return render(request, 'orders/orders.html', {
-        'orders': orders
-    })
+                    price=basket.product.price
 
-@login_required
-def order_detail(request, order_id):
-    order = get_object_or_404(
-        Order,
-        id=order_id,
-        user=request.user
-    )
+                )
 
-    return render(request, 'orders/order_detail.html', {
-        'order': order,
-    })
-#########
+            self.baskets.delete()
+
+        return response
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context['baskets'] = self.baskets
+
+        return context
+    
+    # Просмотр заказа
+from django.views.generic import DetailView
+
+
+class OrderDetailView(DetailView):
+
+    model = Order
+
+    template_name = 'orders/order_detail.html'
+
+    pk_url_kwarg = 'order_id'
+
+    context_object_name = 'order'
+
+    def get_queryset(self):
+
+        return (
+            Order.objects
+            .for_user(self.request.user)
+            .with_items()
+        )
+    
+    # Список заказов
+from django.views.generic import ListView
+
+
+class UserOrdersView(ListView):
+
+    model = Order
+
+    template_name = 'orders/orders.html'
+
+    context_object_name = 'orders'
+
+    paginate_by = 10
+
+    def get_queryset(self):
+
+        qs = (
+            Order.objects
+            .for_user(self.request.user)
+            .with_items()
+            .order_by('-created')
+        )
+
+        status = self.request.GET.get('status')
+
+        if status:
+
+            qs = qs.filter(status=status)
+
+        return qs
+    
 @login_required
 def order_status(request):
     if request.method == 'POST':
@@ -128,13 +146,74 @@ def order_status(request):
        
     return redirect(request.META.get('HTTP_REFERER', 'orders:user_orders'))
 
+@login_required
+def order_create(request):
+    baskets = Basket.objects.filter(user=request.user)
 
-# # Получаем выбранное значение фильтра
-#         selected_asu = self.request.GET.get('name_asu')
-#         print("Выбранное АСУ:", selected_asu)  # Вывод в консоль
-#        # messages.info(self.request, f"Вы выбрали АСУ: {selected_asu}")  # Вывод в браузере
+    if not baskets.exists():
+        return redirect('products:index')
 
-#         selected_uso = self.request.GET.get('name_uso')
-#         print("Выбранное УСО:", selected_uso)  # Вывод в консоль
-#         # messages.info(self.request, f"Вы выбрали УСО: {selected_uso}")  # Вывод в браузере
+    if request.method == 'POST':
 
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        # status = request.POST.get('status')
+        phone = request.POST.get('phone')
+
+        with transaction.atomic():
+
+         order = Order.objects.create(
+             user=request.user,
+             customer_name=name,
+             address=address,
+             status=Order.STATUS_NEW,
+             phone =phone,
+
+        )
+
+        # перенос корзины в заказ
+        for basket in baskets:
+            OrderItem.objects.create(
+                order=order,
+                product=basket.product,
+                quantity=basket.quantity,
+                price=basket.product.price
+            )
+
+        # очистка корзины
+        baskets.delete()
+
+        return redirect('orders:success')
+
+    return render(request, 'orders/order-create.html', {
+        'baskets': baskets
+    })
+
+@login_required
+def success(request):
+    return render(request, 'orders/success.html')
+
+@login_required
+def user_orders(request):
+    status = request.GET.get('status')
+
+    orders = Order.objects.filter(user=request.user).order_by('-created')
+
+    if status:
+        orders = orders.filter(status=status)
+
+    return render(request, 'orders/orders.html', {
+        'orders': orders
+    })
+
+@login_required
+def order_detail(request, order_id):
+    order = get_object_or_404(
+        Order,
+        id=order_id,
+        user=request.user
+    )
+
+    return render(request, 'orders/order_detail.html', {
+        'order': order,
+    })   
