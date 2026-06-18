@@ -9,7 +9,7 @@
 <p></p>
 <p></p>
 
-<h2>Оформление заказа</h2>
+<h2>Оформление заказа - order-create.html</h2>
 
 <form method="post">
      {% csrf_token %}
@@ -49,7 +49,7 @@
                {% else %}
                btn-info
                {% endif %}">
-               {{ order.status }}
+               <!-- {{ order.status }} -->
                Подтвердить
           </button>
      </form>
