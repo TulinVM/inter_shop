@@ -1,3 +1,4 @@
+#orders/models.py
 from django.db import models
 from users.models import User
 from products.models import Product
@@ -26,11 +27,11 @@ class Order(models.Model):
     )
      
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    customer_name = models.CharField(max_length=255)
-    address = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
+    customer_name = models.CharField(max_length=25, verbose_name='Имя клиента')
+    address = models.TextField(verbose_name='Адрес доставки')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_NEW)
-    phone = PhoneNumberField(region='RU', null=False, blank=False) 
+    phone = PhoneNumberField(region='RU', null=False, blank=False, verbose_name='Номер телефона') 
 
     objects = OrderQuerySet.as_manager()
 
