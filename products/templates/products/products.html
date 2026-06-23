@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<br>
 <div class="container">
 
     <div class="row">
@@ -18,9 +19,9 @@
                 <a href="{% url 'products:products1' category.id %}" class="list-group-item">
                     {{ category.name }}
                 </a>
-               
+
                 <!-- <p><a href="{% url 'products:products1' category.id %}" class="list-group-item">bnbm</a></p> -->
-                 {% endfor %}
+                {% endfor %}
 
             </div>
 
@@ -94,10 +95,5 @@
 
 
 {% block footer %}
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Store 2026 DIANITA Ароматы, пробуждающие чувства.</p>
-    </div>
-    <!-- /.container -->
-</footer>
+{% include 'products/footers.html' %}
 {% endblock %}

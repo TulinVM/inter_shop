@@ -3,3 +3,6 @@
 <ul>
     <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
 </ul>
+{% block footer %}
+{% include 'products/footers.html' %}
+{% endblock %}

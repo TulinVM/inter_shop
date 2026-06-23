@@ -1,4 +1,4 @@
-# orders/views.py
+# views.py
 # Теперь вместо обычной функции используем CreateView.
 
 from django.views.generic import CreateView
@@ -67,11 +67,6 @@ class OrderCreateView(CreateView):
         context['baskets'] = self.baskets
 
         return context
-    
-     #####
-    def form_invalid(self, form):
-        print(form.errors)
-        return super().form_invalid(form)
     
     # Просмотр заказа
 from django.views.generic import DetailView
@@ -151,48 +146,48 @@ def order_status(request):
        
     return redirect(request.META.get('HTTP_REFERER', 'orders:user_orders'))
 
-# @login_required
-# def order_create(request):
-#     baskets = Basket.objects.filter(user=request.user)
+@login_required
+def order_create(request):
+    baskets = Basket.objects.filter(user=request.user)
 
-#     if not baskets.exists():
-#         return redirect('products:index')
+    if not baskets.exists():
+        return redirect('products:index')
 
-#     if request.method == 'POST':
+    if request.method == 'POST':
 
-#         name = request.POST.get('name')
-#         address = request.POST.get('address')
-#         # status = request.POST.get('status')
-#         phone = request.POST.get('phone')
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        # status = request.POST.get('status')
+        phone = request.POST.get('phone')
 
-#         with transaction.atomic():
+        with transaction.atomic():
 
-#          order = Order.objects.create(
-#              user=request.user,
-#              customer_name=name,
-#              address=address,
-#              status=Order.STATUS_NEW,
-#              phone =phone,
+         order = Order.objects.create(
+             user=request.user,
+             customer_name=name,
+             address=address,
+             status=Order.STATUS_CONFIRMED,
+             phone =phone,
 
-#         )
+        )
 
-    #     # перенос корзины в заказ
-    #     for basket in baskets:
-    #         OrderItem.objects.create(
-    #             order=order,
-    #             product=basket.product,
-    #             quantity=basket.quantity,
-    #             price=basket.product.price
-    #         )
+        # перенос корзины в заказ
+        for basket in baskets:
+            OrderItem.objects.create(
+                order=order,
+                product=basket.product,
+                quantity=basket.quantity,
+                price=basket.product.price
+            )
 
-    #     # очистка корзины
-    #     baskets.delete()
+        # очистка корзины
+        baskets.delete()
 
-    #     return redirect('orders:success')
+        return redirect('orders:success')
 
-    # return render(request, 'orders/order-create.html', {
-    #     'baskets': baskets
-    # })
+    return render(request, 'orders/order-create.html', {
+        'baskets': baskets
+    })
 
 @login_required
 def success(request):
@@ -221,20 +216,4 @@ def order_detail(request, order_id):
 
     return render(request, 'orders/order_detail.html', {
         'order': order,
-    })  
-
-# from .forms import OrderForm
-# @login_required
-# def order_detail(request, order_id):
-#     order = get_object_or_404(
-#         Order,
-#         id=order_id,
-#         user=request.user
-#     )
-
-#     form = OrderForm(instance=order)
-
-#     return render(request, 'orders/order_detail.html', {
-#         'order': order,
-#         'form': form,
-#     }) 
+    })   

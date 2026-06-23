@@ -7,82 +7,76 @@
 <br>
 <br>
 <br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-row">
+                <div class="col-lg-12 text-center">
 
+                    <h5>"orders.html"</h5>
+                    <h2>Мои заказы - "orders.html"</h2>
 
-<h5>"orders.html"</h5>
-<h2>Мои заказы  -  "orders.html"</h2>
+                    <a href="?status=new">Новые</a> |
+                    <a href="?status=confirmed">Подтвержденные</a> |
+                    <a href="?status=shipped">Отправлен</a>
+                    <hr>
 
-<a href="?status=new">Новые</a> |
-<a href="?status=confirmed">Подтвержденные</a> |
-<a href="?status=shipped">Отправлен</a>
-
-<hr>
-
-<div class="tabs">
-    {% csrf_token %}
-    {% if orders %}
-    <main class="main">
-        <div class="result-wrapper">
-
-            <div class="adaptive-table-wrapper">
-                <table class="adaptive-table">
-                    <thead>
-                        <tr>
-                            <th>Просмотр |</th>
-                            <th>Заказ № |</th>
-                            <th>Клиент |</th>
-                            <th>Статус | </th>
-                            <th>Дата |</th>
-                            <!-- <th>Изменить |</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
+                    <div class="tabs">
                         {% csrf_token %}
-                        {% for order in orders %}
-                        <tr>
-                            <td>
-                                <div class="summary-button">
-                                    <a href="{% url 'orders:order_detail' order.id %}" class="back-href" {{%
-                                        order.orders %}}>
-                                        <img src="{% static 'vendor/img/eye.svg' %}" alt="Просмотреть" width="16"
-                                            height="16" class="mg-lft"></a>
+                        {% if orders %}
+                        <main class="main">
+                            <div class="result-wrapper">
+                                <div class="adaptive-table-wrapper">
+                                    <table class="adaptive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Просмотр |</th>
+                                                <th>Заказ № |</th>
+                                                <th>Клиент-1 |</th>
+                                                <th>Клиент-2 |</th>
+                                                <th>Статус | </th>
+                                                <th>Дата |</th>
+                                                <!-- <th>Изменить |</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% csrf_token %}
+                                            {% for order in orders %}
+                                            <tr>
+                                                <td>
+                                                    <div class="summary-button">
+                                                        <a href="{% url 'orders:order_detail' order.id %}"
+                                                            class="back-href" {{ order.orders }}>
+                                                            <img src="{% static 'vendor/img/eye.svg' %}"
+                                                                alt="Просмотреть" width="16" height="16"
+                                                                class="mg-lft"></a>
+                                                    </div>
+                                                </td>
+                                                <td>{{ order.id }}</td>
+                                                <td>{{ order.user }}</td>
+                                                <td>{{ order.customer_name }}</td>
+                                                <td>{{ order.status }}</td>
+                                                <td>{{ order.created }}</td>
+                                                {% csrf_token %}
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </td>
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.user }}</td>
-                            <td>{{ order.status }}</td>
-                            <td>{{ order.created }}</td>
 
-                            {% csrf_token %}
-                            <!-- {% if order.status == 'new' %}
-                            <td>
-                                <a class="btn btn-success btn-lg float-right" href="{% url 'orders:create' %}">
-                                    Оформить заказ2
-                                </a>
-
-                            </td>
-
-                            {% endif %} -->
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                                {% else %}
+                                <p>Нет заказов</p>
+                                {% endif %}
+                            </div>
+                            <hr>
+                            <hr>
+                    </div>
+                </div>
             </div>
-
-            {% else %}
-            <p>Нет заказов</p>
-            {% endif %}
         </div>
-        <hr>
-        <hr>
-
-        {% endblock %}
-
-{% block footer %}
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Store 2026 DIANITA Ароматы, пробуждающие чувства.</p>
     </div>
-    <!-- /.container -->
-</footer>
-{% endblock %}
+    {% endblock %}
+
+    {% block footer %}
+    {% include 'products/footers.html' %}
+    {% endblock %}

@@ -12,6 +12,11 @@ class IndexView(TitleMixin, TemplateView):
     template_name = 'products/index.html'
     title = 'Store'
 
+class IndexView1(TitleMixin, TemplateView):
+    template_name = 'products/tel.html'
+    title = 'Store'
+
+
 
 class ProductsListView(TitleMixin, ListView):
     model = Product

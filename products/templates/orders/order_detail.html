@@ -2,60 +2,64 @@
 {% load static %}
 <div class="tabs">
     {% block content %}
-    {% csrf_token %}
-    <hr>
-    <hr>
-    <hr>
-    <h5>Oreder_detail.html</h5>
-    <h2>Заказ №{{ form.order.id }}</h2>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="form-row">
+                    <div class="col-lg-12 text-center">
+                        {% csrf_token %}
+                        <hr>
+                        <hr>
+                        <hr>
+                        <h5>Oreder_detail.html</h5>
+                        <h2>Заказ №{{ order.id }}</h2>
 
-    <h3>Статус: {{ form.order.status }}</h3>
-    <h3>Адрес: {{ order.address }}</h3>
-    <h3>Телефон: {{ order.phone }}</h3>
+                        <h3>Статус: {{ order.status }}</h3>
+                        <h3>Адрес: {{ order.address }}</h3>
+                        <h3>Телефон: {{ order.phone }}</h3>
 
 
-    <h3>Товары:</h3>
-    <thead>
-        <tr>
-            <th>Наименование |</th>
-            <th>Цена |</th>
-            <th>Количество |</th>
-            <th>Сумма | </th>
-            <!-- <th>Дата |</th> -->
-            <!-- <th>Изменить |</th> -->
-        </tr>
-    </thead>
-    <br>
+                        <h3>Товары:</h3>
+                        <thead>
+                            <tr>
+                                <th>Наименование |</th>
+                                <th>Цена |</th>
+                                <th>Количество |</th>
+                                <th>Сумма | </th>
+                                <!-- <th>Дата |</th> -->
+                                <!-- <th>Изменить |</th> -->
+                            </tr>
+                        </thead>
+                        <br>
 
-    {% for item in order.items.all %}
+                        {% for item in order.items.all %}
 
-    <td>{{ item.product.name }}|</td>
-    <td>{{ item.price }}|</td>
-    <td>{{ item.quantity }}|</td>
-    <td>{{ item.sum }}|</td>
+                        <td>{{ item.product.name }}|</td>
+                        <td>{{ item.price }}|</td>
+                        <td>{{ item.quantity }}|</td>
+                        <td>{{ item.sum }}|</td>
 
-    <!-- <p>
-        {{ item.product.name }}
+                        <hr>
 
-        Цена: {{ item.price }} ₽
+                        {% endfor %}
 
-        Количество: {{ item.quantity }} <br>
+                        <h3>Всего товаров: {{ order.total_quantity }}</h3>
+                        <h3>Итого: {{ order.total_sum }} ₽</h3>
 
-        Сумма: {{ item.sum }} ₽
-    </p> -->
+                        <ul>
+                            <li><a href="/">Вернуться в магазин</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
 
-    <hr>
-
-    {% endfor %}
-
-    <h3>Всего товаров: {{ order.total_quantity }}</h3>
-    <h3>Итого: {{ order.total_sum }} ₽</h3>
-
-    <ul>
-        <li><a href="/">Вернуться в магазин</a></li>
-    </ul>
-    <ul>
-        <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
-    </ul>
-</div>
-{% endblock %}
+    {% block footer %}
+    {% include 'products/footers.html' %}
+    {% endblock %}

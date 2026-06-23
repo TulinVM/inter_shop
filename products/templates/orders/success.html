@@ -1,14 +1,39 @@
-<h2>✅ Заказ успешно оформлен!</h2>
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
 {% csrf_token %}
-<p>Спасибо, {{ orders_order.customer_name }}!</p>
-<a href="/">Вернуться в магазин</a>
 <br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-row">
+                <div class="col-lg-12 text-center">
+                    <br><br>
+                    <a>success.html</a>
+                    <h2>✅ Заказ успешно оформлен!</h2>
+                    {% csrf_token %}
+                    <p>Спасибо, {{ orders.users }}!</p>
+                    <a href="/">Вернуться в магазин</a>
+                    <br>
 
 
-<a class="btn btn-success btn-lg float-right" href="{% url 'orders:orders' %}">
+                    <a class="" href="{% url 'orders:orders' %}">
 
-    Мои подтвержденные заказы
-</a>
-<ul>
-    <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
-</ul>
+                        Мои подтвержденные заказы
+                    </a>
+                    <ul>
+                        <a class="" href="{% url 'orders:user_orders' %}">Мои
+                            заказы</a>
+                             <!-- <a class="btn btn-success btn-lg float-right" href="{% url 'orders:user_orders' %}">Мои
+                            заказы</a> -->
+                    </ul>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block footer %}
+{% include 'products/footers.html' %}
+{% endblock %}

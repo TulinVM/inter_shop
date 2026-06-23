@@ -9,64 +9,58 @@
 <p></p>
 <p></p>
 <br><br>
-<h2>Оформление заказа - order-create.html</h2>
- <h3> Добрый день </h3>
-{{ form.as_p }}
-<form method="post">
-     {% csrf_token %}
-     <!-- {% for basket in baskets %} -->
-     <!-- <p> Добрый день  -->
-          <!-- {{ basket.user }} </p> -->
-     <!-- {% endfor %} -->
-     <!-- <input type="text" name="name" placeholder="Имя" required class="form-control mb-2" cols="45">
-     <textarea name="address" placeholder="Адрес доставки" required class="form-control mb-1"></textarea>
-     <input 
-    type="tel"
-    name="phone"
-    placeholder="Номер телефона = +79991234567"
-    required
-    class="form-control mb-1"> -->
+<div class="container">
+     <div class="row">
+          <div class="col-lg-12">
+               <div class="form-row">
+                    <div class="col-lg-12 text-center">
+
+                         <h2>Оформление заказа - order-create.html</h2>
+                         <h3> Добрый день </h3>
+                         {{ form }}
+                         <form method="post">
+                              {% csrf_token %}
+                              {% for basket in baskets %}
+                              <p> Добрый день
+                                   {{ basket.user }} </p>
+                              {% endfor %}
+                              <input type="text" name="name" placeholder="Имя" required class="form-control mb-2" cols="45"> -->
+                              <textarea name="address" placeholder="Адрес доставки" required
+                                   class="form-control mb-1"></textarea>
+                              <input type="tel" name="phone" placeholder="Номер телефона = +79991234567" required
+                                   class="form-control mb-1">
 
 
-     {% csrf_token %}
+                              {% csrf_token %}
 
-     <h4>Ваш заказ № {{ order.id }}</h4>
-     
-     {% for basket in baskets %}
-     <p>
-     <p>{{ basket.user }} - 
-          {{ basket.product.name }} x {{ basket.quantity }} = {{ basket.sum }}
-     </p>
-     {% endfor %}
+                              <h4>Ваш заказ № {{ order.id }}</h4>
 
-     <h3>Итого: {{ baskets.total_sum }}</h3>
+                              {% for basket in baskets %}
+                              <p>
+                              <p>{{ basket.user }} -
+                                   {{ basket.product.name }} x {{ basket.quantity }} = {{ basket.sum }}
+                              </p>
+                              {% endfor %}
 
-     <form method="post" action="{% url 'orders:order_status' %}">
-      <!-- <button type="submit" class="btn btn-success">
-        Оформить заказ
-    </button -->
-          {% csrf_token %}
+                              <h3>Итого: {{ baskets.total_sum }}</h3>
 
-          <input type="hidden" name="order_id" value="{{ order.id }}">
+                              <form method="post" action="{% url 'orders:order_status' %}">
+                                   <button type="submit" class="btn btn-success">
+                                        Оформить заказ
+                                   </button -->
+                                   {% csrf_token %}
 
-          <button type="submit" class="btn
-               {% if order.status == 'confirmed' %}btn-success
-               {% elif order.status == 'shipped' %}btn-danger
-               {% else %}
-               btn-info
-               {% endif %}">
-               {{ order.status }}
-               Подтвердить
-          </button>
-     </form>
+                                   <input type="hidden" name="order_id" value="{{ order.id }}">
 
-     {% endblock %}
+                                   <button type="submit" class="btn
+               
+                                         btn-info">
+                                        Подтвердить
+                                   </button>
+                              </form>
 
- {% block footer %}
-<footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Store 2026 DIANITA Ароматы, пробуждающие чувства.</p>
-    </div>
-    <!-- /.container -->
-</footer>
-{% endblock %}
+                              {% endblock %}
+
+                              {% block footer %}
+                              {% include 'products/footers.html' %}
+                              {% endblock %}
