@@ -7,7 +7,6 @@ flake8
 isort
 mccabe
 pillow
-psycopg2
 pycodestyle
 pyflakes
 pytz
