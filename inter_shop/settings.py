@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-ber6u&+9utzuyiq8c$hgt%4vz35b!-kji06s^skf@i-kq2d#5"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
@@ -184,8 +184,10 @@ SESSION_COOKIE_AGE = 1209600
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 CACHES = {
     "default": {
@@ -196,5 +198,8 @@ CACHES = {
 
 CSRF_TRUSTED_ORIGINS = [
     'http://82.202.142.110:8081',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+    'http://192.168.1.100:8080',
     # 'https://myshop.kz',
 ]
