@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
                  '82.202.142.110',
                  '192.168.1.52',
-                 '192.168.0.101',]
+                 '192.168.0.100',]
 DOMAIN_NAME = "http://localhost:8000"
 
 # Application definition
@@ -89,27 +89,27 @@ INTERNAL_IPS = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "shop_db",
-#         "USER": "postgres",
-#         "PASSWORD": "1234",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
 DATABASES = {
     "default": {
-        # "ENGINE": "django.db.backends.postgresql",
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "shop_db",
-        "USER": "shop_user",
+        "USER": "postgres",
         "PASSWORD": "1234",
         "HOST": "localhost",
         "PORT": "5432",
     }
 }
+# DATABASES = {
+#     "default": {
+#         # "ENGINE": "django.db.backends.postgresql",
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "shop_db",
+#         "USER": "shop_user",
+#         "PASSWORD": "1234",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation
