@@ -1,49 +1,120 @@
-<!doctype html>
-<html lang="en">
+{% extends 'products/base.html' %}
+{% load static %}
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block css %}
+<link href="{% static 'vendor/css/style.css' %}" rel="stylesheet">
+{% endblock %}
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% block content %}
 
-  <title>Chat App</title>
-</head>
+<div class="container mt-5">
 
-<body>
-  <a class="navbar-brand" href="{% url 'index' %}">Интернет магазин DIANITA Ароматы, пробуждающие чувства.</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="container"> <br>
-    <input type="text" name="room_name" id="room_name" placeholder="Room Name"><br>
-    <input type="text" name="person_name" id="person_name" placeholder="Your Name"><br>
-    <input type="button" name="button" value="Click to Start Chat" id="submit">
-  </div>
-  <script>
-    document.querySelector("#submit").onclick = function (e) {
-      var roomname = document.querySelector("#room_name").value;
-      var personname = document.querySelector("#person_name").value;
-      window.location.pathname = '/room/' + roomname + '/' + personname;
-    }
-  </script>
+    <h2 class="mb-4 text-center">
+        Наши контакты
+    </h2>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
-</body>
+    <div class="row">
 
-</html>
-{% block footer %}
-{% include 'products/footers.html' %}
+        <div class="col-md-6">
+
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    Контактная информация
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+                        <strong>🏢 Магазин:</strong><br>
+                        Inter Shop
+                    </p>
+
+                    <p>
+                        <strong>📍 Адрес:</strong><br>
+                        г. Москва,<br>
+                        ул. Примерная, д.10
+                    </p>
+
+                    <p>
+                        <strong>📞 Телефон:</strong><br>
+                        <a href="tel:+79991234567">
+                            +7 (999) 123-45-67
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>📧 Email:</strong><br>
+                        <a href="mailto:info@intershop.ru">
+                            info@intershop.ru
+                        </a>
+                    </p>
+
+                    <p>
+                        <strong>🕘 Время работы:</strong><br>
+                        Пн–Пт: 09:00–18:00<br>
+                        Сб–Вс: Выходной
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+                    Обратная связь
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Сообщение</label>
+                            <textarea
+                                class="form-control"
+                                rows="5"
+                                name="message"
+                                required></textarea>
+                        </div>
+
+                        <button class="btn btn-success">
+                            Отправить сообщение
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}
