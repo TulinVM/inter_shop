@@ -1,13 +1,16 @@
 #products/urls.py
 from django.urls import path
 
-from products.views import ProductsListView, ProductsListView1, IndexView, IndexView1, basket_add, basket_remove
+from products.views import ProductsListView, ProductsListView1, IndexView, basket_add, basket_remove 
+#, IndexView1, basket_add, basket_remove
+from . import views
+# from contacts.views import ContactView
 
 app_name = 'products'
 
 urlpatterns = [
        path('', ProductsListView.as_view(), name='index'),
-       path('tel/', IndexView1.as_view(), name='tel'),
+       # path('tel/', IndexView1.as_view(), name='tel'),
        path('category/<int:category_id>/', ProductsListView.as_view(), name='category'),
        path('page/<int:page>/', ProductsListView.as_view(), name='paginator'),
       # path('orders/<int:page>/', ProductsListView.as_view(), name='orders'),

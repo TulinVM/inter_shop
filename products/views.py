@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect, render
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
@@ -13,7 +13,8 @@ class IndexView(TitleMixin, TemplateView):
     title = 'Store'
 
 class IndexView1(TitleMixin, TemplateView):
-    template_name = 'products/tel.html'
+    # model = ContactMessage
+    template_name = 'contacts/tel.html'
     title = 'Store'
 
 
