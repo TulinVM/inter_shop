@@ -11,69 +11,79 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+# Загружаем переменные окружения
+load_dotenv(BASE_DIR / ".env")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ber6u&+9utzuyiq8c$hgt%4vz35b!-kji06s^skf@i-kq2d#5"
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# ------------------------------------------------------------------------------
+# SECURITY
+# ------------------------------------------------------------------------------
 
-ALLOWED_HOSTS = ['127.0.0.1',
-                 'localhost',
-                 '82.202.142.110',
-                 '192.168.1.52',
-                 '192.168.0.100',
-                 '192.168.0.153',
-                 ]
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DOMAIN_NAME = "http://localhost:8000"
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-# Application definition
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv("ALLOWED_HOSTS", "").split(",")
+    if host.strip()
+]
+
+
+# ------------------------------------------------------------------------------
+# APPLICATIONS
+# ------------------------------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
-    #"debug_toolbar",
-    "phonenumber_field",
-    "users",
-    "products",
-    "orders",
-    # "store",
-    "contacts",
-
+    'products',
+    'users',
+    'orders',
+    'contacts',
 ]
+
+
+# ------------------------------------------------------------------------------
+# MIDDLEWARE
+# ------------------------------------------------------------------------------
+
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-   # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = "inter_shop.urls"
+
+ROOT_URLCONF = 'inter_shop.urls'
+
+
+# ------------------------------------------------------------------------------
+# TEMPLATES
+# ------------------------------------------------------------------------------
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / "templates"],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
@@ -84,130 +94,139 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "inter_shop.wsgi.application"
+
+WSGI_APPLICATION = 'inter_shop.wsgi.application'
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+# ------------------------------------------------------------------------------
+# DATABASE
+# ------------------------------------------------------------------------------
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "shop_db",
-        "USER": "postgres",
-        "PASSWORD": "1234",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "ENGINE": os.getenv("DB_ENGINE"),
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
-# DATABASES = {
-#     "default": {
-#         # "ENGINE": "django.db.backends.postgresql",
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "shop_db",
-#         "USER": "shop_user",
-#         "PASSWORD": "1234",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
-# }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+# ------------------------------------------------------------------------------
+# PASSWORDS
+# ------------------------------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "ru-ru"
+# ------------------------------------------------------------------------------
+# LANGUAGE
+# ------------------------------------------------------------------------------
 
-TIME_ZONE = "UTC"
+LANGUAGE_CODE = 'ru'
+
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# STATIC_URL = "static/"
-# STATICFILES_DIRS = (
-#     BASE_DIR / "static",
-# )
-
-# MEDIA_URL = '/'
-# MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/'
-MEDIA_ROOT = BASE_DIR / '/'
+# ------------------------------------------------------------------------------
+# STATIC
+# ------------------------------------------------------------------------------
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Users
+# ------------------------------------------------------------------------------
+# MEDIA
+# ------------------------------------------------------------------------------
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# ------------------------------------------------------------------------------
+# EMAIL
+# ------------------------------------------------------------------------------
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    import os
+
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+    EMAIL_HOST = os.getenv("EMAIL_HOST")
+
+    EMAIL_PORT = int(os.getenv("EMAIL_PORT", 587))
+
+    EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", "True") == "True"
+
+    EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+
+    EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+    DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+
+    SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+
+# ------------------------------------------------------------------------------
+# LOGIN Users
+# ------------------------------------------------------------------------------
+
+# LOGIN_URL = "users:login"
+
+# LOGIN_REDIRECT_URL = "index"
+
+# LOGOUT_REDIRECT_URL = "index"
 
 AUTH_USER_MODEL = "users.User"
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-# Sending emails
 
-# if DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# else:
-#     EMAIL_HOST = "smtp.yandex.ru"
-#     EMAIL_PORT = 465
-#     EMAIL_HOST_USER = 'for_example@yandex.ru'
-#     EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
-#     EMAIL_USE_SSL = True
+# ------------------------------------------------------------------------------
+# DEFAULT PK
+# ------------------------------------------------------------------------------
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# EMAIL_HOST = "smtp.yandex.ru"
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = 'for_example@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
-# EMAIL_USE_SSL = True
-
-#Для Gmail:
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'TulinVM@gmail.com'
-EMAIL_HOST_PASSWORD = 'vgnf xjwe oylw fjvh'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-
+# ------------------------------------------------------------------------------
 # Telefons
+# ------------------------------------------------------------------------------
 PHONENUMBER_DB_FORMAT = "E164"
 
 SESSION_COOKIE_AGE = 1209600
@@ -231,5 +250,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://localhost:8000',
     'http://192.168.1.100:8080',
-    # 'https://myshop.kz',
+#     # 'https://myshop.kz',
 ]
+
+
+print(os.getenv("EMAIL_HOST_USER"))
