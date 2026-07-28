@@ -254,4 +254,4 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-print(os.getenv("EMAIL_HOST_USER"))
+# print(os.getenv("EMAIL_HOST_USER"))
