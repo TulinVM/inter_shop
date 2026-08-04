@@ -1,3 +1,4 @@
+#products/views.py
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import HttpResponseRedirect, render
 from django.views.generic.base import TemplateView
