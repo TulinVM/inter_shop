@@ -16,3 +16,4 @@ class ContactAdmin(admin.ModelAdmin):
         'name',
         'email'
     )
+    
