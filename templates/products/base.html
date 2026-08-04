@@ -75,11 +75,11 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a class="dropdown-item" href="{% url 'users:logout' %}">
                                     Выйти
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <form method="post" action="{% url 'users:logout' %}">
                                     {% csrf_token %}
@@ -88,12 +88,12 @@
                                     </button>
                                 </form>
                             </li>
-                            <form method="post" action="{% url 'users:logout' %}">
+                            <!-- <form method="post" action="{% url 'users:logout' %}">
                                 {% csrf_token %}
                                 <button type="submit" class="btn btn-danger">
                                     Выйти
                                 </button>
-                            </form>
+                            </form> -->
                         </ul>
                     </li>
                     {% else %}
