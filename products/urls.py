@@ -1,7 +1,7 @@
 #products/urls.py
 from django.urls import path
 
-from products.views import ProductsListView, ProductsListView1, IndexView, basket_add, basket_remove 
+from products.views import ProductsListView, ProductsListView1, ProductsListView2,IndexView, basket_add, basket_remove 
 #, IndexView1, basket_add, basket_remove
 from . import views
 # from contacts.views import ContactView
@@ -17,5 +17,6 @@ urlpatterns = [
        path("basket/add/<int:product_id>/", basket_add, name="basket_add"),
        path("basket/remove/<int:basket_id>/", basket_remove, name="basket_remove"),
        path('products1/<int:category_id>/', ProductsListView1.as_view(), name='products1'),
+       path('products2/<int:category_id>/', ProductsListView2.as_view(), name='products2'),
        path('products/', ProductsListView.as_view(), name='products'),
 ]

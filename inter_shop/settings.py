@@ -238,12 +238,33 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 
+#CACHES = {
+#    "default": {
+#        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+#        "LOCATION": "redis://127.0.0.1:6379/1",
+#    }
+#}
+
 CACHES = {
+
     "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+
+        "BACKEND": "django_redis.cache.RedisCache",
+
+        "LOCATION":
+            f"redis://{os.getenv('REDIS_HOST')}:{os.getenv('REDIS_PORT')}/{os.getenv('REDIS_DB')}",
+
+        "OPTIONS": {
+
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+
+        }
+
     }
+
 }
+
+
 
 CSRF_TRUSTED_ORIGINS = [
     'http://82.202.142.110:8081',

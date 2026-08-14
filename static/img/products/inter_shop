@@ -1,0 +1,29 @@
+server {
+
+    listen 80;
+
+    server_name 82.202.142.110;
+
+    client_max_body_size 50M;
+
+    location = /favicon.ico {
+        access_log off;
+        log_not_found off;
+    }
+
+    location /static/ {
+        alias /home/user1/inter_shop/staticfiles/;
+    }
+
+    location /media/ {
+        alias /home/user1/inter_shop/media/;
+    }
+
+    location / {
+
+        include proxy_params;
+
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+
+}
