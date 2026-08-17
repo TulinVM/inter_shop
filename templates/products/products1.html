@@ -48,6 +48,11 @@
                                 <h4 class="card-title text-center">
                                     <a href="{{ product.image.url }}" target="_blank">{{ product.name }}</a>
                                 </h4>
+                                <div class="card-footer text-center">
+                                <a class="btn btn-outline-success" href="{% url 'products:products2' product.pk %}" class="btn btn-primary">
+                                    Открыть карточку продукта
+                                </a>
+                            </div>
                                 <div class="card-text text-center">
                                     {{ product.category }}
                                     {{ product.category.description }}

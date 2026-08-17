@@ -1,108 +1,94 @@
 {% extends 'products/base.html' %}
 {% load static %}
 
+
 {% block css %}
 <link href="{% static 'css/products.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
+
 <div class="container">
-
     <div class="row">
-
-        <div class="col-lg-3">
-<br>
-            <h1 class="my-4">Интернет магазин косметики</h1>
-            <div class="list-group">
-                {% for category in categories %}
-                <a href="{% url 'products:products1' category.id %}" class="list-group-item">
-                    {{ category.name }}
-                </a>
-
-                {% endfor %}
-            </div>
-
-        </div>
-        <!-- /.col-lg-3 -->
-
         <div class="col-lg-9">
+            <div class="alert alert-light text-center" role="alert">
+                <div class="mt-5  text-center">
+                    <br>
+                    <h1 class="my-4">Интернет магазин косметики</h1>
+                    <div class="list-group">
+                        <div class="col-lg-19">
 
-            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
+                            <!-- <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"> -->
+                            <!-- <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol> -->
 
-                <div class="row">
-                    
+                            <!-- <div class="row"> -->
 
-                    {% for product in object_list %}
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <a>
-                                <br>
-                                <img class="card-img-top" src="{{ product.image.url }}" alt="">
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title text-center">
-                                    <a href="{{ product.image.url }}" target="_blank">{{ product.name }}</a>
-                                </h4>
-                                <div class="card-text text-center">
-                                    {{ product.category }}
-                                    {{ product.category.description }}
 
-                                    <h4>{{ product.price }} руб.</h4>
+                            <h5 class="card-text text-center">
+                                {{ product.name }}
+                            </h5>
+
+                            <!-- <br>hjhjhk -->
+                            {% if product.image %}
+                            <br>
+                            <div class="col-lg-9 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a>
+                                        <img class="rounded mx-auto d-block" src="{{ product.image.url }}" max-width="600px"
+                                            height="600px" overflow=hidden alt="{{ product.name }}">
+                                        {% endif %}
+                                    </a>
                                 </div>
-                                <div class="card-text text-center">
+                            </div>
+
+                            <div class="col-md-19">
+
+                                <h3>{{ product.name }}</h3>
+
+                                <p>
                                     {{ product.description }}
+                                </p>
+
+                                <p>
+                                    {{ product.description_complete }}
+                                </p>
+
+                                <h4>
+                                    {{ product.price }} ₽
+                                </h4>
+                            </div>
+
+                            <!-- <button class="btn btn"> -->
+                                <div class="card-footer text-center">
+                                    <a class="btn btn-outline-success"
+                                        href="{% url 'products:basket_add' product.id %}">
+                                        Отправить в корзину
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a class="btn btn-outline-success" href="{% url 'products:basket_add' product.id %}">
-                                    Отправить в корзину
-                                </a>
-                            </div>
+                            </button>
                         </div>
+                        <ul>
+                            <li><a href="/">Вернуться в магазин</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
+                        </ul>
+
                     </div>
-                    {% endfor %}
 
                 </div>
 
-                {% if is_paginated %}
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
-                            <a class="page-link"
-                               href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}">
-                                Предыдущая
-                            </a>
-                        </li>
-                        {% for page in page_obj.paginator.page_range %}
-                        <li class="page-item">
-                            <a class="page-link" href="?page={{ page }}">
-                                {{ page }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                        <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
-                            <a class="page-link"
-                                href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}">
-                                Следующая
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                {% endif %}
-
             </div>
-
         </div>
 
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
 
-
-    {% block footer %}
-    {% include 'products/footers.html' %}
-    {% endblock %}
+{% block footer %}
+{% include 'products/footers.html' %}
+{% endblock %}

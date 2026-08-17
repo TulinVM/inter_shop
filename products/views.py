@@ -8,6 +8,7 @@ from common.views import TitleMixin
 from products.models import Basket, Product, ProductCategory
 
 from orders.models import Order
+from django.views.generic import DetailView
 
 class IndexView(TitleMixin, TemplateView):
     template_name = 'products/index.html'
@@ -52,10 +53,10 @@ class ProductsListView1(TitleMixin, ListView):
         context['categories'] = ProductCategory.objects.all()
         return context
 
-class ProductsListView2(TitleMixin, ListView):
+class ProductsListView2(TitleMixin, DetailView):
     model = Product
     template_name = 'products/products2.html'
-    paginate_by = 3
+    paginate_by = 1
     title = 'Store - Каталог'
 
     def get_queryset(self):
