@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
+<link href="{% static 'css/mobile.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -63,63 +65,13 @@
             </div>
 
         </div>
-<!-- =========================== -->
-        <!-- <div class="col-md-6">
-
-            <div class="card shadow">
-
-                <div class="card-header bg-success text-white">
-                    Обратная связь
-                </div>
-
-                <div class="card-body">
-
-                    <form method="post">
-
-                        {% csrf_token %}
-                        {{ form.as_p }}
-
-                        <div class="form-group">
-                            <label>Ваше имя</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="name"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input
-                                type="email"
-                                class="form-control"
-                                name="email"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Сообщение</label>
-                            <textarea
-                                class="form-control"
-                                rows="5"
-                                name="message"
-                                required></textarea>
-                        </div>
-
-                         <button class="btn btn-success">
-                            Отправить сообщение
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div> -->
 
     </div>
 
 </div>
 
+{% endblock %}
+
+{% block footer %}
+{% include 'products/footers.html' %}
 {% endblock %}

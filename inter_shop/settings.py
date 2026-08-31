@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     if host.strip()
 ]
 
+DOMAIN_NAME = os.getenv("DOMAIN_NAME")
 
 # ------------------------------------------------------------------------------
 # APPLICATIONS
@@ -149,6 +150,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Europe/Moscow'
+
+PGTZ='Europe/Moscow'
+
 
 USE_I18N = True
 

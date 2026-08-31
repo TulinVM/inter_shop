@@ -10,10 +10,10 @@ app_name = 'users'
 
 urlpatterns = [
     path('login/', UserLoginView.as_view(), name='login'),
-    path('registration/', UserRegistrationView.as_view(), name='registration'),
+    path('registr/', UserRegistrationView.as_view(), name='registration'),
     path("profile/<int:pk>", login_required(UserProfileView.as_view()), name='profile'),
     path("profile1/<int:pk>", login_required(UserProfileView1.as_view()), name='profile1'),
-    path('logout/',LogoutView.as_view(next_page='index'),name='logout'),
-    # path('logout/', LogoutView.as_view(), name='logout'),
+    path('get_absolute_url/',LogoutView.as_view(next_page='index'),name='logout'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('verify/<str:email>/<uuid:code>/', EmailVerificationView.as_view(), name='email_verification'),
 ]

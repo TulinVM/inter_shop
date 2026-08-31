@@ -1,0 +1,626 @@
+/* ============================================================
+   INTER SHOP
+   mobile.css
+   Адаптация сайта для мобильных устройств
+   ============================================================ */
+
+
+/* ============================================================
+   1. ОСНОВНЫЕ НАСТРОЙКИ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+}
+
+
+/* ============================================================
+   2. HEADER
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    header {
+        width: 100%;
+    }
+
+    .navbar {
+        padding: 8px 0;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-toggler {
+        padding: 6px 9px;
+    }
+
+    .navbar-nav {
+        padding-top: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+}
+
+
+/* ============================================================
+   3. ОСНОВНОЕ МЕНЮ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu a {
+        width: 100%;
+        padding: 10px;
+    }
+
+}
+
+
+/* ============================================================
+   4. ЗАГОЛОВКИ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 26px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 23px;
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    h3 {
+        font-size: 21px;
+        line-height: 1.3;
+    }
+
+    h4 {
+        font-size: 19px;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+}
+
+
+/* ============================================================
+   5. КАТАЛОГ ТОВАРОВ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+}
+
+
+/* ============================================================
+   6. BOOTSTRAP КОЛОНКИ ТОВАРОВ
+   ============================================================ */
+
+@media (max-width: 576px) {
+
+    .product-column {
+        width: 100%;
+    }
+
+    .col-mobile-12 {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   7. КАРТОЧКА ТОВАРА
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-title {
+        font-size: 19px;
+        line-height: 1.3;
+    }
+
+    .card-text {
+        font-size: 16px;
+    }
+
+}
+
+
+/* ============================================================
+   8. ИЗОБРАЖЕНИЕ ТОВАРА
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .product-image {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .product-image {
+        height: 200px;
+    }
+
+}
+
+
+/* ============================================================
+   9. ЦЕНА ТОВАРА
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .product-price {
+        font-size: 21px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+}
+
+
+/* ============================================================
+   10. КНОПКИ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .btn {
+        min-height: 44px;
+        padding: 9px 14px;
+        font-size: 16px;
+    }
+
+    .btn-primary,
+    .btn-success,
+    .btn-danger,
+    .btn-warning {
+        min-height: 44px;
+    }
+
+    .btn-mobile-full {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   11. КНОПКА "В КОРЗИНУ"
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .add-to-basket,
+    .basket-add,
+    .btn-cart {
+        width: 100%;
+        min-height: 46px;
+        font-size: 17px;
+    }
+
+}
+
+
+/* ============================================================
+   12. КАРТОЧКА ТОВАРА — ПОДРОБНЕЕ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .product-detail {
+        width: 100%;
+    }
+
+    .product-detail-image {
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+        margin-bottom: 20px;
+    }
+
+    .product-detail-info {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   13. MODAL — КАРТОЧКА ТОВАРА
+   ============================================================ */
+
+@media (max-width: 576px) {
+
+    .modal-dialog {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        min-height: 100%;
+    }
+
+    .modal-content {
+        min-height: 100vh;
+        border: 0;
+        border-radius: 0;
+    }
+
+    .modal-header {
+        padding: 12px 15px;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-footer {
+        padding: 12px 15px;
+    }
+
+}
+
+
+/* ============================================================
+   14. ФОРМЫ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    form {
+        width: 100%;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        max-width: 100%;
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+
+    .form-control {
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+}
+
+
+/* ============================================================
+   15. КОРЗИНА
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .basket {
+        width: 100%;
+    }
+
+    .basket-item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    .basket-item-image {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto 10px;
+    }
+
+    .basket-item-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .basket-total {
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 15px;
+    }
+
+}
+
+
+/* ============================================================
+   16. ТАБЛИЦЫ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+}
+
+
+/* ============================================================
+   17. ЗАКАЗ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .order-form {
+        width: 100%;
+    }
+
+    .order-summary {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .order-total {
+        font-size: 21px;
+        font-weight: 600;
+    }
+
+}
+
+
+/* ============================================================
+   18. ЛИЧНЫЙ КАБИНЕТ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .profile {
+        width: 100%;
+    }
+
+    .profile-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+}
+
+
+/* ============================================================
+   19. РЕГИСТРАЦИЯ / АВТОРИЗАЦИЯ
+   ============================================================ */
+
+@media (max-width: 576px) {
+
+    .auth-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .auth-card {
+        width: 100%;
+        padding: 15px;
+    }
+
+}
+
+
+/* ============================================================
+   20. КОНТАКТЫ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .contacts {
+        width: 100%;
+    }
+
+    .contacts-map {
+        width: 100%;
+        height: 300px;
+    }
+
+}
+
+
+/* ============================================================
+   21. FOOTER
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    footer {
+        width: 100%;
+        text-align: center;
+    }
+
+    footer .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .col,
+    footer [class*="col-"] {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+}
+
+
+/* ============================================================
+   22. ОТСТУПЫ
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .mt-mobile-0 {
+        margin-top: 0 !important;
+    }
+
+    .mt-mobile-2 {
+        margin-top: 10px !important;
+    }
+
+    .mb-mobile-2 {
+        margin-bottom: 10px !important;
+    }
+
+    .p-mobile-2 {
+        padding: 10px !important;
+    }
+
+}
+
+
+/* ============================================================
+   23. HORIZONTAL OVERFLOW
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    .row {
+        --bs-gutter-x: 1rem;
+    }
+
+    .container,
+    .container-fluid {
+        max-width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   24. МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    h3 {
+        font-size: 19px;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .product-price {
+        font-size: 19px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   25. ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+    .container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    h1 {
+        font-size: 21px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+}

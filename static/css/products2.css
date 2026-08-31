@@ -1,11 +1,5 @@
-/* ===================================================
-   Inter Shop DIANITA
-   Contacts Page (tel.html)
-=================================================== */
-
-/* Фон страницы */
 body {
-    background-color: #f8f9fa;
+    padding-top: 56px;
 }
 
 /* Контейнер */
@@ -15,118 +9,8 @@ body {
     margin: auto;
 }
 
-/* Заголовок страницы */
-h2 {
-    color: #343a40;
-    font-weight: 700;
-    margin-bottom: 35px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Карточка */
-.card {
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all .3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, .15);
-}
-
-/* Заголовок карточки */
-.card-header {
-    font-size: 22px;
-    font-weight: bold;
-    padding: 15px 20px;
-}
-
-/* Тело карточки */
-.card-body {
-    padding: 25px;
-    background: #ffffff;
-}
-
-/* Абзацы */
-.card-body p {
-    margin-bottom: 20px;
-    font-size: 17px;
-    color: #495057;
-    line-height: 1.7;
-}
-
-/* Выделение */
-.card-body strong {
-    color: #0d6efd;
-    font-size: 18px;
-}
-
-.card-body b {
-    color: #e1ec0e;
-    font-size: 28px;
-}
-/* Ссылки */
-.card-body a {
-    color: #198754;
-    text-decoration: none;
-    font-weight: 600;
-    transition: .3s;
-}
-
-.card-body a:hover {
-    color: #dc3545;
-    text-decoration: underline;
-}
-
-/* Поля формы */
-.form-control {
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    padding: 10px 15px;
-    font-size: 16px;
-    transition: .3s;
-}
-
-.form-control:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 8px rgba(13, 110, 253, .25);
-}
-
-/* Подписи */
-label {
-    font-weight: 600;
-    color: #495057;
-}
-
-/* Кнопка */
-.btn-success {
-    width: 100%;
-    padding: 12px;
-    font-size: 17px;
-    border-radius: 8px;
-    transition: .3s;
-}
-
-.btn-success:hover {
-    transform: scale(1.02);
-}
-
-/* Сообщения Django */
-.alert {
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Тень */
-.shadow {
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15) !important;
-}
-
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (max-width: 568px) {
 
     h2 {
         font-size: 28px;
@@ -236,7 +120,7 @@ h2 {
 }
 
  .product-image {
-        height: 200px;
+        height: 40px;
 }
 
 /* Подписи */
@@ -283,4 +167,25 @@ label {
     .card-body p {
         font-size: 16px;
     }
+} */
+
+/* 
+img {
+    width:100%;
+    height:360px
+}
+
+.div-fixed-size {
+  width: 300px; 
+  height: 200px; 
+  overflow: hidden;
+}
+
+.img-fluid. {
+    max-width: 100%;
+    height: auto;}
+
+.image {
+    width:100%;
+    height:360px
 } */

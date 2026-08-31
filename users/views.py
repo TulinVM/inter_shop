@@ -17,7 +17,7 @@ class UserLoginView(TitleMixin, LoginView):
     title = 'Store - Авторизация'
 
 
-class UserRegistrationView(TitleMixin, SuccessMessageMixin, CreateView):
+class UserRegistrationView(CreateView): #(TitleMixin, SuccessMessageMixin, CreateView):
     model = User
     form_class = UserRegistrationForm
     template_name = 'users/registration.html'

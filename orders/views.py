@@ -38,7 +38,7 @@ class OrderCreateView(CreateView):
 
             form.instance.user = self.request.user
 
-            form.instance.status = Order.STATUS_NEW
+            form.instance.status = Order.Status.NEW
 
             response = super().form_valid(form)
 
@@ -133,14 +133,14 @@ def order_status(request):
         )
 
         # переключение статуса
-        if order.status == Order.STATUS_NEW:
-            order.status = Order.STATUS_CONFIRMED
+        if order.status == Order.Status.NEW:
+            order.status = Order.Status.CONFIRMED
 
-        elif order.status == Order.STATUS_CONFIRMED:
-            order.status = Order.STATUS_SHIPPED
+        elif order.status == Order.Status.CONFIRMED:
+            order.status = Order.Status.SHIPPED
             
-        elif order.status == Order.STATUS_SHIPPED:
-            order.status = Order.STATUS_NEW
+        elif order.status == Order.Status.SHIPPED:
+            order.status = Order.Status.NEW
 
         order.save()
        
@@ -166,7 +166,7 @@ def order_create(request):
              user=request.user,
              customer_name=name,
              address=address,
-             status=Order.STATUS_CONFIRMED,
+             status=Order.Status.CONFIRMED,
              phone =phone,
 
         )

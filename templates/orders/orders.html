@@ -1,6 +1,11 @@
 {% extends 'products/base.html' %}
 {% load static %}
 
+{% block css %}
+<link href="{% static 'css/order_detail.css' %}" rel="stylesheet">
+<link href="{% static 'css/mobile.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 {% csrf_token %}
 <br>
@@ -30,13 +35,13 @@
                                     <table class="adaptive-table">
                                         <thead>
                                             <tr>
-                                                <th>Просмотр |</th>
-                                                <th>Заказ № |</th>
-                                                <th>Клиент-1 |</th>
-                                                <th>Клиент-2 |</th>
-                                                <th>Статус | </th>
-                                                <th>Дата |</th>
-                                                <!-- <th>Изменить |</th> -->
+                                                <th>Просмотр</th>
+                                                <th>Заказ №</th>
+                                                <th>Заказчик</th>
+                                                <th>Получатель</th>
+                                                <th>Статус</th>
+                                                <th>Дата</th>
+                                                <!-- <th>Изменить</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,7 +52,7 @@
                                                     <div class="summary-button">
                                                         <a href="{% url 'orders:order_detail' order.id %}"
                                                             class="back-href" {{ order.orders }}>
-                                                            <img src="{% static 'vendor/img/eye.svg' %}"
+                                                            <img src="{% static 'img/eye.svg' %}"
                                                                 alt="Просмотреть" width="16" height="16"
                                                                 class="mg-lft"></a>
                                                     </div>
@@ -55,7 +60,7 @@
                                                 <td>{{ order.id }}</td>
                                                 <td>{{ order.user }}</td>
                                                 <td>{{ order.customer_name }}</td>
-                                                <td>{{ order.status }}</td>
+                                                <td>{{ order.get_status_display }}</td>
                                                 <td>{{ order.created }}</td>
                                                 {% csrf_token %}
                                             </tr>

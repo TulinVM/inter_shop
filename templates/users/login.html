@@ -1,5 +1,10 @@
-{% extends 'users/base.html' %}
+{% extends 'products/base.html' %}
 
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 <main>
@@ -69,4 +74,8 @@
         </div>
     </div>
 </main>
+{% endblock %}
+
+{% block footer %}
+{% include 'products/footers.html' %}
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/style.css' %}" rel="stylesheet"> -->
+<link href="{% static 'css/mobile.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+<br>
+<br>
+<h2>Обратная связь tel_copy.html</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="post" action="{% url 'contacts:contacts' %}">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button class="btn btn-success">
+        Отправить
+    </button>
+
+</form>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% include 'products/footers.html' %}
+{% endblock %}

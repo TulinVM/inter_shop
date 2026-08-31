@@ -13,18 +13,23 @@ class Contact(models.Model):
 
 
 class Order(models.Model):
+     
+    STATUS_NEW = 'new'
+    STATUS_CONFIRMED = 'confirmed'
+    STATUS_SHIPPED = 'shipped'
 
-    class Status(models.TextChoices):
-        NEW = 'new', 'Новый'
-        CONFIRMED = 'confirmed', 'Подтвержден'
-        SHIPPED = 'shipped', 'Отправлен'
-
+    STATUS_CHOICES = (
+        ('new', 'Новый'),
+        ('confirmed', 'Подтвержден'),
+        ('shipped', 'Отправлен'),
+        
+    )
      
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=255)
     address = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=Status.choices, default=Status.NEW)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_NEW)
     phone = PhoneNumberField(region='RU', null=False, blank=False) 
 
     objects = OrderQuerySet.as_manager()
