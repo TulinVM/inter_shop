@@ -8,16 +8,14 @@
 
 <div class="tabs">
     {% block content %}
-    <br><br>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-10">
                 <div class="form-row">
                     <div class="col-lg-12 text-center">
                         {% csrf_token %}
-                        <hr>
-                        <hr>
-                        <hr>
+                        
                         <h5>Oreder_detail.html</h5>
                         <h2>Заказ №{{ order.id }}</h2>
 
@@ -61,8 +59,8 @@
 
                         <ul>
                             <li><a href="/">Вернуться в магазин</a></li>
-                        </ul>
-                        <ul>
+                        <!-- </ul>
+                        <ul> -->
                             <li><a href="{% url 'orders:user_orders' %}">Мои заказы</a></li>
                         </ul>
                     </div>

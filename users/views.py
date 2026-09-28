@@ -30,14 +30,19 @@ class UserProfileView(LoginRequiredMixin, UpdateView): #TitleMixin,
     model = User
     form_class = UserProfileForm
     template_name = 'users/profile.html'
-    title = 'Store - Личный кабинет'
+    # title = 'Store - Личный кабинет'
+    extra_context = {'title': 'Store - Личный кабинет'}
 
-    # login_url = '/users/login/'
+    login_url = '/users/login/'
 
     # def get_success_url(self):
-    #     return reverse_lazy('users:profile', args=(self.object.id,))
+    #     return reverse_lazy('users:email_verification', args=(self.object.id,))
+    
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_success_url(self):
+        return reverse_lazy('users:profile')
     
 class UserProfileView1(LoginRequiredMixin, UpdateView): #TitleMixin, 
     model = User
@@ -67,3 +72,15 @@ class EmailVerificationView(TitleMixin, TemplateView):
             return super(EmailVerificationView, self).get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse('index'))
+
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+class CustomLogoutView(LogoutView):
+
+    def custom_logout(request):
+        logout(request)
+        return redirect('home')  # Редирект на главную
+        # template_name = 'logout.html'  # шаблон после выхода
+    # next_page = '/'  # перенаправление после выхода (опционально)

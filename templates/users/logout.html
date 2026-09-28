@@ -1,6 +1,14 @@
 <!-- {% extends 'users/base.html' %} -->
-
+{% extends 'products/base.html' %}
+{% load static %}
 
 <!-- {% block content %} -->
 
 <!-- {% endblock %} -->
+{% block content %}
+<div class="container">
+    <h3>Вы успешно вышли из системы</h3>
+    <p>Спасибо за посещение нашего сайта!</p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Войти снова</a>
+</div>
+{% endblock %}

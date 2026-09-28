@@ -8,9 +8,7 @@
 
 {% block content %}
 {% csrf_token %}
-<br>
-<br>
-<br>
+
 <br>
 <div class="container">
     <div class="row">
@@ -19,7 +17,7 @@
                 <div class="col-lg-12 text-center">
 
                     <h5>"orders.html"</h5>
-                    <h2>Мои заказы - "orders.html"</h2>
+                    <h2>Мои заказы</h2>
 
                     <a href="?status=new">Новые</a> |
                     <a href="?status=confirmed">Подтвержденные</a> |
@@ -52,9 +50,8 @@
                                                     <div class="summary-button">
                                                         <a href="{% url 'orders:order_detail' order.id %}"
                                                             class="back-href" {{ order.orders }}>
-                                                            <img src="{% static 'img/eye.svg' %}"
-                                                                alt="Просмотреть" width="16" height="16"
-                                                                class="mg-lft"></a>
+                                                            <img src="{% static 'img/eye.svg' %}" alt="Просмотреть"
+                                                                width="16" height="16" class="mg-lft"></a>
                                                     </div>
                                                 </td>
                                                 <td>{{ order.id }}</td>
@@ -73,8 +70,6 @@
                                 <p>Нет заказов</p>
                                 {% endif %}
                             </div>
-                            <hr>
-                            <hr>
                     </div>
                 </div>
             </div>

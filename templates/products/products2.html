@@ -5,6 +5,7 @@
 {% block css %}
 <link href="{% static 'css/products2.css' %}" rel="stylesheet">
 <link href="{% static 'css/mobile.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/index.css' %}" rel="stylesheet"> -->
 {% endblock %}
 
 {% block content %}
@@ -18,29 +19,16 @@
                     <h1 class="my-4">Интернет магазин косметики</h1>
                     <div class="list-group">
                         <div class="col-lg-19">
-
-                            <!-- <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel"> -->
-                            <!-- <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol> -->
-
-                            <!-- <div class="row"> -->
-
-
-                            <h5 class="card-text text-center">
-                                {{ product.name }}
-                            </h5>
-
-                            <!-- <br>hjhjhk -->
+                            <h1>
+                                {{ product.category.name }}
+                            </h1> 
                             {% if product.image %}
                             <br>
                             <div class="col-lg-9 col-md-6 mb-4">
                                 <div class="card h-100">
                                     <a>
-                                        <img class="rounded mx-auto d-block" src="{{ product.image.url }}" max-width="600px"
-                                            height="600px" overflow=hidden alt="{{ product.name }}">
+                                        <img class="rounded mx-auto d-block" src="{{ product.image.url }}" max-width="500px"
+                                            height="500px" overflow=hidden alt="{{ product.name }}">
                                         {% endif %}
                                     </a>
                                 </div>
@@ -54,10 +42,12 @@
                                     {{ product.description }}
                                 </p>
 
-                                <p>
-                                    {{ product.description_complete }}
-                                </p>
+                                <div class="mt-5  text-left">
 
+                                    <a><h4>
+                                    {{ product.description_complete }}
+                                     </a></h4>
+                                </div>
                                 <h4>
                                     {{ product.price }} ₽
                                 </h4>

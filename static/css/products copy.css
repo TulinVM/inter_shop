@@ -15,7 +15,7 @@ body {
 }
 
 /* Адаптивность */
-@media (max-width: 568px) {
+@media (max-width: 768px) {
 
     h2 {
         font-size: 28px;
@@ -40,9 +40,9 @@ body {
 }
 
 /* Контейнер */
-.container {
+/* .container {
     max-width: 1140px;
-}
+} */
 
 /* Заголовок страницы */
 h2 {
@@ -125,7 +125,7 @@ h2 {
 }
 
  .product-image {
-        height: 40px;
+        height: 200px;
 }
 
 /* Подписи */

@@ -4,21 +4,46 @@ body {
 
 .adaptive-table-wrapper {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Плавная прокрутка на iOS */
 }
 
 .adaptive-table {
-    min-width:auto;
+    min-width: auto;
     width: 100%;
     table-layout: fixed;
-    position: sticky; 
+    position: sticky;
     left: 0;
 }
 
-th, td {
-  padding: 12px 15px;
-  text-align: center;
-  vertical-align: top;
-  min-width: 120px; /* Минимальная ширина ячейки */
-  border: 1px solid #ddd;
+th,
+td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: top;
+    min-width: 120px;
+    /* Минимальная ширина ячейки */
+    border: 1px solid #ddd;
+}
+
+ul.nav {
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style: none;
+}
+
+ul.nav a {
+    display: block;
+    width: 7em;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-top: 1px dashed #333;
+    border-right: 1px dashed #333;
+    border-left: 5px solid #333;
+    text-decoration: none;
+    color: #333;
+}
+
+ul.nav li:last-child a {
+    border-bottom: 1px dashed #333;
 }

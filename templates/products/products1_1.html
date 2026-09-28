@@ -2,63 +2,78 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'css/products1.css' %}" rel="stylesheet">
-<link href="{% static 'css/mobile.css' %}" rel="stylesheet">
+<link href="{% static 'css/products.css' %}" rel="stylesheet">
+<!-- <link href="{% static 'css/mobile.css' %}" rel="stylesheet"> -->
 <!-- <link href="{% static 'css/index.css' %}" rel="stylesheet"> -->
 {% endblock %}
 
 {% block content %}
 <div class="container">
-<br><br><br>
-    <div class="row">      
-        <div class="col-lg-3">       
-            <!-- <h1 class="my-4">Интернет магазин косметики</h1> -->
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <br>
+            <br>
+            <br>
+            <br>
+
             <h1 class="my-4">{{ category.name }}</h1>
-            <h6>{{category.description}}</h6>
-            <div class="list-group">
-                <!-- {% for category in categories %}
+            h1 category.name</h1>
+            <!-- <div class="list-group">
+                {% for category in categories %}
                 <a href="{% url 'products:products1' category.id %}" class="list-group-item">
                     {{ category.name }}
+                    
                 </a>
 
-                {% endfor %} -->
-            </div>
+                {% endfor %}
+            </div> -->
 
         </div>
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
 
-            <!-- <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol> -->
+                </ol>
 
                 <div class="row">
-                    
+
 
                     {% for product in object_list %}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                             <a>
-                                <br>
-                                <img class="card-img-top" src="{{ product.image.url }}" alt="">
+
+                                <!-- <img class="card-img-top" src="{{ product.image.url }}" alt=""> -->
+                                <a href="#" data-toggle="modal" data-target="#productModal{{ product.id }}">
+
+                                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+
+                                </a>  
+                            
+                            <!-- <div class="card-body">
+                                <a class="card-title text-center">
+                                    <a class="btn btn-outline-success" href="{% url 'products:products2' product.pk %}">
+                                        <img class="card-img-top" src="{{ product.image.url }}">
+                                    </a>
+                                </a>
+                            </div> -->
                             </a>
-                            <div class="card-body">
-                                <h4 class="card-title text-center">
-                                    <!-- <a href="{{ product.image.url }}" target="_blank">{{ product.name }}</a> -->
-                                    <div class="card-title text-center">
-                                    <a class="btn btn-outline-link btn-lg" href="{% url 'products:products2' product.pk %}">
+                                <div class="card-footer text-center">
+                                    <a class="btn btn-outline-success" href="{% url 'products:products2' product.pk %}"
+                                        class="btn btn-primary">
                                         {{ product.name }}
                                     </a>
                                 </div>
-   
-                                </h4>
                                 <div class="card-text text-center">
                                     {{ product.category }}
-                                    {{ product.description_complete }}
+                                    {{ product.category.description }}
 
                                     <h4>{{ product.price }} руб.</h4>
                                 </div>
@@ -82,7 +97,7 @@
                     <ul class="pagination justify-content-center">
                         <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
                             <a class="page-link"
-                               href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}">
+                                href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}">
                                 Предыдущая
                             </a>
                         </li>

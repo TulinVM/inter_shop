@@ -1,10 +1,10 @@
 body {
-    background: url("../img/products/IMG_2827-2.jpg") no-repeat center top fixed;
+    background: url("../img/products/bokeh.jpg") no-repeat center top fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    padding-top: 56px;
+    padding-top: 170px;
 }
 
 #start-purchase-btn {
@@ -20,5 +20,9 @@ body {
 
 .texts {
     text-decoration: none;
-    color: red;
+    color: rgb(0, 115, 255);
+    font-size: 17px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    padding: 20px;
 }
