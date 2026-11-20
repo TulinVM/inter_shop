@@ -1,0 +1,140 @@
+{% extends "products/base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="hero-section" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 id="hero-title">INTER SHOP</h1>
+                    <h2>Косметика для вашей красоты</h2>
+                    <p>Откройте для себя коллекцию косметики и средств ухода.</p>
+
+                    <a href="{% url 'products:index' %}" class="btn btn-primary btn-lg">
+                        Перейти в каталог
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="categories-section" aria-labelledby="categories-title">
+        <div class="container">
+            <h2 id="categories-title" class="section-title">Категории</h2>
+
+            <div class="row">
+                {% for category in categories %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <a
+                            href="{% url 'products:products1' category.id %}"
+                            class="category-card"
+                            aria-label="Категория: {{ category.name }}"
+                        >
+                            <div class="category-card-body">
+                                <h3>{{ category.name }}</h3>
+                            </div>
+                        </a>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <p class="text-center">Категории пока не добавлены.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section" aria-labelledby="products-title">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="products-title" class="section-title">Популярные товары</h2>
+
+                <a href="{% url 'products:index' %}" class="catalog-link">
+                    Весь каталог →
+                </a>
+            </div>
+
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <article class="product-card">
+                            <a
+                                href="{% url 'products:products2' product.pk %}"
+                                class="product-image-link"
+                                aria-label="Подробнее о товаре: {{ product.name }}"
+                            >
+                                {% if product.image %}
+                                    <img
+                                        src="{{ product.image.url }}"
+                                        alt="{{ product.name }}"
+                                        class="product-image"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                {% else %}
+                                    <img
+                                        src="{% static 'img/no-image.jpg' %}"
+                                        alt="Изображение товара отсутствует"
+                                        class="product-image"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+                                {% endif %}
+                            </a>
+
+                            <div class="product-info">
+                                <h3 class="product-name">{{ product.name }}</h3>
+
+                                {% if product.category %}
+                                    <p class="product-category">{{ product.category.name }}</p>
+                                {% endif %}
+
+                                {% if product.price %}
+                                    <p class="product-price">{{ product.price }} ₽</p>
+                                {% endif %}
+
+                                <a
+                                    href="{% url 'products:products2' product.pk %}"
+                                    class="btn btn-primary product-button"
+                                >
+                                    Подробнее
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <div class="empty-products">
+                            <h3>Товаров пока нет</h3>
+                            <p>Загляните позже — скоро здесь появятся товары.</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="about-title">
+        <div class="container">
+            <div class="about-content">
+                <h2 id="about-title">INTER SHOP DIANITA</h2>
+                <p>
+                    Добро пожаловать в наш интернет-магазин косметики.
+                    Мы предлагаем широкий выбор товаров для ухода и красоты.
+                </p>
+
+                <a href="{% url 'contacts:tel' %}" class="btn btn-outline-primary">
+                    Наши контакты
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

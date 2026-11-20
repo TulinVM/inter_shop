@@ -82,5 +82,5 @@ class CustomLogoutView(LogoutView):
     def custom_logout(request):
         logout(request)
         return redirect('home')  # Редирект на главную
-        # template_name = 'logout.html'  # шаблон после выхода
-    # next_page = '/'  # перенаправление после выхода (опционально)
+    #template_name = 'logout.html'  # шаблон после выхода
+    #next_page = '/'  # перенаправление после выхода (опционально)

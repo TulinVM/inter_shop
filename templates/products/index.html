@@ -2,57 +2,277 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'css/index.css' %}" rel="stylesheet">
-<link href="{% static 'css/mobile.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
+
 {% block content %}
-<section>
-    <!--    <div class="alert alert-light text-center" role="alert">-->
-    <!--        Информационное сообщение-->
-    <!--    </div>-->
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero-section">
+
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="alert alert text-center" role="alert">
-                    <div class="mt-12  text-center">
-                        <br>
-                        <!-- <div class="texts"> -->
-                            <h3>
-                                <p>Интернет магазин косметики DIANITA</p>
-                                <p>Ароматы, пробуждающие чувства.</p>
-                            </h3>
-                       
-                            <h5>
-                                <p>
-                                    Собственный бренд. Новые товары на рынке.</p>
-                                <p> Новые поступления в магазине косметики.
-                                </p>
-                            </h5>
-                        <!-- </div> -->
-                </div>
-                <div class="mt-5  text-left">
-                    <p> ПРЕМИАЛЬНЫЕ КОМПОНЕНТЫ:
-                        В основе — натуральные ароматические масла из Франции и Германии.
-                        Никакой химии, только чистый, безопасный и благородный запах.
-                    </p>
-                    <p>БЕЗОПАСНОСТЬ И СЕРТИФИКАЦИЯ:
-                        Вся продукция имеет сертификаты соответствия.</p>
-                    <p>ЭКОЛОГИЧЕСКОЕ ПРОИЗВОДСТВО:
-                        Каждый флакон создается с вниманием к деталям, вручную. Это делает
-                        ваш экземпляр по-настоящему уникальным.</p>
-                    </p>
-                </div>
-                <button id="start-purchase-btn" type="button" class="btn btn-lg">
-                    <a id="start-purchase-link" href="{% url 'products:index' %}">
-                        Начать покупки
-                    </a>
-                </button>
+
+        <div class="hero-content">
+
+            <div class="hero-text">
+
+                <h1>
+                    INTER SHOP
+                </h1>
+
+                <h2>
+                    Косметика для вашей красоты
+                </h2>
+
+                <p>
+                    Откройте для себя коллекцию косметики
+                    и средств ухода.
+                </p>
+
+                <a href="{% url 'products:index' %}" class="btn btn-primary btn-lg">
+
+                    Перейти в каталог
+
+                </a>
+
             </div>
+
         </div>
+
     </div>
-    </div>
+
 </section>
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="categories-section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Категории
+        </h2>
+        <!-- {% for category in categories %}
+ <h3>
+{{ category.name }}
+ </h3>
+
+
+{% endfor %} -->
+
+        <div class="row">
+
+            {% for category in categories %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <a href="{% url 'products:products1' category.id %}" class="category-card">
+
+                    <div class="category-card-body">
+
+                        <h3>
+                            {{ category.name }}
+                        </h3>
+
+                        <!-- <span>
+                            Смотреть товары →
+                        </span> -->
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            {% empty %}
+
+            <div class="col-12">
+                <h1 class="my-4">{{ category.name }}</h1>
+                <h6>{{category.description}}</h6>
+                <div class="list-group">
+                    <!-- {% for category in categories %}
+                <a href="{% url 'products:products1' category.id %}" class="list-group-item">
+                    {{ category.name }}
+                </a>
+
+                {% endfor %} -->
+                </div>
+
+                <p class="text-center">
+                    Категории пока не добавлены.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section class="products-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <h2 class="section-title text-center">
+                Популярные товары
+            </h2>
+
+            <a href="{% url 'products:index' %}" class="catalog-link">
+                Весь каталог →
+            </a>
+
+        </div>
+
+
+        <div class="row">
+
+            {% for product in products %}
+
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+
+                <div class="product-card">
+
+                    <!-- Картинка товара -->
+
+                    <a href="{% url 'products:products2' product.pk %}" class="product-image-link">
+
+                        {% if product.image %}
+
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+
+                        {% else %}
+
+                        <img src="{% static 'img/no-image.jpg' %}" alt="Нет изображения" class="product-image">
+
+                        {% endif %}
+
+                    </a>
+
+
+                    <!-- Информация -->
+
+                    <div class="product-info">
+
+                        <h3 class="product-name">
+
+                            {{ product.name }}
+
+                        </h3>
+
+
+                        {% if product.category %}
+
+                        <div class="product-category">
+
+                            {{ product.category.name }}
+
+                        </div>
+
+                        {% endif %}
+
+
+                        <!-- {% if product.price %}
+
+                        <div class="product-price">
+
+                            {{ product.price }} ₽
+
+                        </div>
+
+                        {% endif %} -->
+
+
+                        <a href="{% url 'products:products2' product.pk %}" class="btn btn-primary product-button">
+
+                            Подробнее
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="empty-products">
+
+                    <h3>
+                        Товаров пока нет
+                    </h3>
+
+                    <p>
+                        Добавьте товары через административную панель Django.
+                    </p>
+
+                    <a href="/admin/" class="btn btn-primary">
+                        Перейти в админ-панель
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about-section">
+
+    <div class="container">
+
+        <div class="about-content">
+
+            <h2>
+                INTER SHOP DIANITA
+            </h2>
+
+            <p>
+                Добро пожаловать в наш интернет-магазин косметики.
+                Мы предлагаем широкий выбор товаров для ухода
+                и красоты.
+            </p>
+
+            <a href="{% url 'contacts:tel' %}" class="btn btn-outline-primary">
+                Наши контакты
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 {% endblock %}
 
 {% block footer %}

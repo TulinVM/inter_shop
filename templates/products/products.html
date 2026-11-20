@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <link href="{% static 'css/products1.css' %}" rel="stylesheet">
 <link href="{% static 'css/mobile.css' %}" rel="stylesheet">
 <!-- <link href="{% static 'css/index.css' %}" rel="stylesheet"> -->
@@ -17,16 +18,16 @@
 
             <h1 class="my-9"></h1>
 
-            <!-- <div class="list-group">
+            <div class="list-group">
                 {% for category in categories %}
                 <a href="{% url 'products:products1' category.id %}" class="list-group-item">
                     {{ category.name }}
                 </a>
 
-                <p><a href="{% url 'products:products1' category.id %}" class="list-group-item">bnbm</a></p> -->
-            <!-- {% endfor %}
+                <!-- <p><a href="{% url 'products:products1' category.id %}" class="list-group-item"></a></p> -->
+            {% endfor %}
 
-            </div> -->
+            </div>
 
         </div>
         <!-- /.col-lg-3 -->

@@ -1,0 +1,39 @@
+body {
+    background: url("../img/products/bokeh.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    padding-top: 670px;
+    min-height: 100vh;
+    display: grid;
+    /* grid-template-rows: auto 1fr auto; Строка для контента (заполняет остальное пространство), строка для футера */
+}
+
+#start-purchase-btn {
+    background-color: #23364e;
+    border-color: #23364e;
+    color: white;
+}
+
+#start-purchase-link {
+    text-decoration: none;
+    color: white;
+}
+
+.texts {
+    text-decoration :thickness;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer {
+  /* margin-top: auto; Автоматически вычисляет отступ, чтобы прижать к низу */
+  /* padding: 20px; */
+  /* background-color: #f8f8f8; */
+  text-align: center;
+  grid-row: 2; /* Принадлежность ко второй строке */
+}

@@ -1,0 +1,134 @@
+#products/views.py
+from django.views.generic import TemplateView
+from .models import Product, ProductCategory
+
+
+class IndexView(TemplateView):
+    template_name = 'products/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['products'] = Product.objects.all()[:8]
+        context['categories'] = ProductCategory.objects.all()
+
+        return context
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import HttpResponseRedirect, render
+from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from django.shortcuts import get_object_or_404
+
+from common.views import TitleMixin
+from products.models import Basket, Product, ProductCategory
+
+from orders.models import Order
+from django.views.generic import DetailView
+
+class IndexView(TitleMixin, TemplateView):
+    template_name = 'products/index.html'
+    title = 'Store'
+
+class IndexView1(TitleMixin, TemplateView):
+    # model = ContactMessage
+    template_name = 'contacts/tel.html'
+    title = 'Store'
+
+
+
+class ProductsListView(TitleMixin, ListView):
+    model = Product
+    template_name = 'products/products.html'
+    paginate_by = 3
+    title = 'Store - Каталог'
+
+    def get_queryset(self):
+        queryset = super(ProductsListView, self).get_queryset()
+        category_id = self.kwargs.get('category_id')
+        return queryset.filter(category_id=category_id) if category_id else queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductsListView, self).get_context_data()
+        context['categories'] = ProductCategory.objects.all()
+        return context
+    
+
+class ProductsListView1(TitleMixin, ListView):
+    model = Product
+    template_name = 'products/products1.html'
+    paginate_by = 3
+    title = 'Store - Каталог'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        category_id = self.kwargs.get('category_id')
+
+        if category_id:
+            return queryset.filter(category_id=category_id)
+
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(
+            object_list=object_list,
+            **kwargs
+        )
+        context['categories'] = ProductCategory.objects.all()
+        category_id = self.kwargs.get('category_id')
+
+        if category_id:
+            context['category'] = get_object_or_404(
+                ProductCategory,
+                id=category_id
+            )
+
+        return context
+
+
+class ProductsListView2(TitleMixin, DetailView):
+    model = Product
+    template_name = 'products/products2.html'
+    paginate_by = 1
+    title = 'Store - Каталог'
+
+    def get_queryset(self):
+        queryset = super(ProductsListView2, self).get_queryset()
+        category_id = self.kwargs.get('category_id')
+        return queryset.filter(category_id=category_id) if category_id else queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProductsListView2, self).get_context_data()
+        context['categories'] = ProductCategory.objects.all()
+        return context
+
+
+@login_required
+def basket_add(request, product_id):
+    product = Product.objects.get(id=product_id)
+    baskets = Basket.objects.filter(user=request.user, product=product)
+    # basket.sum = basket.quantity * basket.product.price
+
+    if not baskets.exists():
+        Basket.objects.create(user=request.user, product=product, quantity=1)
+    else:
+        basket = baskets.first()
+        basket.quantity += 1
+        # basket.quantity = request.POST.get('basketID')
+        # basket.sum = basket.quantity * basket.product.price
+        basket.save()
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+@login_required
+def basket_remove(request, basket_id):
+    basket = Basket.objects.get(id=basket_id)
+    basket.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+class OrdersListView(TitleMixin, ListView):
+    model = Order
+    template_name = 'orders/confirmed_orders.html'
+    paginate_by = 3
+    title = 'Store - Каталог'
